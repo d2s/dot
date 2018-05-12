@@ -1,2 +1,7 @@
 #!/bin/sh
+
+# Requires:
+# - youtube-dl
+# - ffmpeg (`ffprobe` or `avprobe` needed)
+
 youtube-dl --extract-audio --audio-format mp3 "$@"
