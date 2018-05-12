@@ -5,92 +5,154 @@
 # (for extra details, look at `man ls` documentation)
 alias l="ls"
 alias ll="ls -hl"
-alias la='ls -A'
-alias lla='ls -lah'
-alias l='ls -CF'
+alias la="ls -A"
+alias lla="ls -lah"
+alias l="ls -CF"
 
 
 # -----------------------------------------------------------
 # Jump to favorite locations
-alias dotfiles="cd $ZSH"
-alias projects="cd $PROJECTS"
+# -----------------------------------------------------------
+
+if [ $ZSH ] ; then
+  alias dotfiles="cd $ZSH"
+fi
+
+if [ $PROJECTS ] ; then
+  alias projects="cd $PROJECTS"
+fi
 
 
 # -----------------------------------------------------------
-# Copy name of current workind directory to clipboard (Mac OS X)
-if [ -f /usr/bin/pbcopy ]; then
+# Location related aliases
+
+if [ "$OS" = "darwin" ] ; then
+  # Copy name of current workind directory to clipboard
   alias pwdcopy="pwd | pbcopy"
 fi
 
 # -----------------------------------------------------------
 # Lists folders and files sizes in the current folder
-alias ducks='du -cksh * | sort -rn|head -11'
+alias ducks="du -cksh * | sort -rn|head -11"
 
 
 
 # -----------------------------------------------------------
-# grep through history
-function hf() {
-  history | grep $1
-}
-
+if [ "$(command -v grep)" ]; then
+  # grep through history
+  #
+  # Usage:
+  #   hf KEYWORD
+  #
+  function hf() {
+    history | grep $1
+  }
+fi
 
 
 # -----------------------------------------------------------
 # Avoid making mistakes
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
+alias rm="rm -i"
+alias cp="cp -i"
+alias mv="mv -i"
 
 
 # -----------------------------------------------------------
 # c = clear the terminal window
-alias c='clear'
+alias c="clear"
 
 
 # -----------------------------------------------------------
 # Networking toolkit
+# -----------------------------------------------------------
 
-# Shows my public ip
-# (Requires curl)
-alias miip='curl -o- https://secure.informaction.com/ipecho/'
+# -----------------------------------------------------------
+# Shows my public IP address
 
-# List open ports on your machine (Mac OS X)
-alias openholes='sudo lsof -i -P | grep -i "listen"'
+export IP_ECHO_SERVICE="https://secure.informaction.com/ipecho/"
+
+if [ -x "$(command -v curl)" ]; then
+  alias miip="curl -o- $IP_ECHO_SERVICE"
+elif [ -x "$(command -v wget)" ]; then
+  alias miip="wget -qO- $IP_ECHO_SERVICE"
+else
+  if [ $DEBUG = "true" ] ; then
+    echo "miip requires either Curl or Wget to work."
+  fi
+fi
 
 
+# -----------------------------------------------------------
+# Networking: port numbers
 
-# SSH public key copied to clipboard
+if [ -x "$(command -v lsof)" ]; then
+  # Find what application is using a port
+  #
+  # Usage:
+  #   findportuser NUMBER
+  #
+  findportuser() {
+    lsof -i :"$1"
+  }
+
+  if [ "$OS" = "darwin" ] ; then
+    # List open ports on your machine
+    alias openports='sudo lsof -i -P | grep -i "listen"'
+  else
+    # TODO: Find similar command for other systems.
+  fi
+fi
+
+
+# -----------------------------------------------------------
+# SSH public key to clipboard
 if [ -f ~/.ssh/id_rsa.pub ]; then
-  alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to clipboard.'"
+  if [ "$OS" = "darwin" ] ; then
+    alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to clipboard.'"
+  else
+    # TODO: Find similar command for other systems.
+    # alias pubkey=""
+  fi
 fi
 
 
 
 # -----------------------------------------------------------
-# Show system information (Mac OS X)
-if [ -f /usr/sbin/system_profiler ]; then
-  alias hardware-info='/usr/sbin/system_profiler SPHardwareDataType'
+# System information tools
+
+if [ "$OS" = "darwin" ] ; then
+  if [ -f /usr/sbin/system_profiler ]; then
+    alias hardware-info="/usr/sbin/system_profiler SPHardwareDataType"
+  fi
+else
+  # alias hardware-info="" # TODO: Find similar tool
 fi
 
 
 # -----------------------------------------------------------
-# List active processes (OS X)
-alias top='top -o cpu'
+# List active processes
 
+if [ "$OS" = "darwin" ] ; then
+  alias top="top -o cpu"
+else
+  # alias top="top"
+fi
 
+# -----------------------------------------------------------
 # List all processes
 if [ "$OS" = "linux" ] ; then
-  alias processes_all='ps -AFH'
+  alias processes_all="ps -AFH"
 else
-  alias processes_all='ps -Afjv'
+  alias processes_all="ps -Afjv"
 fi
 
 
 # -----------------------------------------------------------
 # Follow system log activity on a terminal window
 if [ "$OS" = "linux" ] ; then
-  alias systail='tail -f /var/log/syslog'
+  alias systail="tail -f /var/log/syslog"
+elif [ "$OS" = "darwin" ] ; then
+  alias systail="tail -f /var/log/system.log"
 else
-  alias systail='tail -f /var/log/system.log'
+  # alias systail=""
 fi
