@@ -98,8 +98,6 @@ if [ -x "$(command -v lsof)" ]; then
   if [ "$OS" = "darwin" ] ; then
     # List open ports on your machine
     alias openports='sudo lsof -i -P | grep -i "listen"'
-  else
-    # TODO: Find similar command for other systems.
   fi
 fi
 
@@ -109,10 +107,8 @@ fi
 if [ -f ~/.ssh/id_rsa.pub ]; then
   if [ "$OS" = "darwin" ] ; then
     alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to clipboard.'"
-  else
-    # TODO: Find similar command for other systems.
-    # alias pubkey=""
   fi
+  # TODO: Find similar command for other systems.
 fi
 
 
@@ -153,6 +149,4 @@ if [ "$OS" = "linux" ] ; then
   alias systail="tail -f /var/log/syslog"
 elif [ "$OS" = "darwin" ] ; then
   alias systail="tail -f /var/log/system.log"
-else
-  # alias systail=""
 fi
