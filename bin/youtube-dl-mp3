@@ -1,7 +1,18 @@
 #!/bin/sh
 
+# -----------------------------------------------------------
 # Requires:
 # - youtube-dl
 # - ffmpeg (`ffprobe` or `avprobe` needed)
+# -----------------------------------------------------------
 
-youtube-dl --extract-audio --audio-format mp3 "$@"
+if [ -x "$(command -v youtube-dl)" ] ; then
+  echo ""
+  echo "Downloading your URL with youtube-dl:"
+  echo ""
+  youtube-dl --extract-audio --audio-format mp3 "$@"
+else
+  echo ""
+  echo "You need to have youtube-dl installed."
+  echo "Read more from the website: https://rg3.github.io/youtube-dl/"
+fi
