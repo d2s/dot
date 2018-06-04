@@ -1,0 +1,214 @@
+#!/bin/zsh
+
+# -----------------------------------------------------------
+# VARIABLES
+# -----------------------------------------------------------
+# Debug mode (true / false)
+DEBUG=true
+# DEBUG=false
+
+# -----------------------------------------------------------
+# Disable: Node Version Manager (true / false)
+DISABLE_NVM=false
+
+# -----------------------------------------------------------
+# Identify operating system and machine type
+export OS=`uname -s | sed -e 's/  */-/g;y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'`
+export OSVERSION=`uname -r`; OSVERSION=`expr "$OSVERSION" : '[^0-9]*\([0-9]*\.[0-9]*\)'`
+export MACHINE=`uname -m | sed -e 's/  */-/g;y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'`
+export PLATFORM="$MACHINE-$OS-$OSVERSION"
+
+
+# -----------------------------------------------------------
+# shortcut to dotfiles path is $ZSH
+export ZSH="$HOME/.dotfiles"
+
+# -----------------------------------------------------------
+# PROJECTS folder
+if [ -d $HOME/Documents/git ]; then
+  export PROJECTS="$HOME/Documents/git"
+fi
+
+# -----------------------------------------------------------
+# default text editor
+export EDITOR="vim"
+export USE_EDITOR=$EDITOR
+export VISUAL=$EDITOR
+
+
+# -----------------------------------------------------------
+# Debugging output
+if [ $DEBUG = "true" ] ; then
+  # Print details about the system
+  echo "PLATFORM: $PLATFORM"
+  # echo "EDITOR: $EDITOR"
+fi
+
+
+# -----------------------------------------------------------
+# antigen
+# - https://github.com/zsh-users/antigen#usage
+
+source "$ZSH/zsh/antigen/antigen.zsh"
+
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle git
+
+# git helper tool for faster workflow
+# - https://github.com/paulirish/git-open#examples
+antigen bundle paulirish/git-open
+
+# zsh-async
+# - “With zsh-async you can run multiple asynchronous jobs”
+# - https://github.com/mafredri/zsh-async
+antigen bundle mafredri/zsh-async
+
+# pure theme for zsh
+# - https://github.com/sindresorhus/pure
+# - (requires zsh-async)
+antigen bundle sindresorhus/pure
+
+# spaceship-zsh-theme
+# - https://github.com/denysdovhan/spaceship-zsh-theme
+# antigen theme https://github.com/denysdovhan/spaceship-zsh-theme spaceship
+
+# Syntax highlighting for Zsh
+# - https://github.com/zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Tell antigen that you're done.
+antigen apply
+
+
+
+# -----------------------------------------------------------
+# Homebrew
+# - https://github.com/drduh/macOS-Security-and-Privacy-Guide#homebrew
+if [ -x "$(command -v brew)" ]; then
+  export HOMEBREW_NO_ANALYTICS=1
+  export HOMEBREW_NO_INSECURE_REDIRECT=1
+  export HOMEBREW_CASK_OPTS=--require-sha
+fi
+
+
+# -----------------------------------------------------------
+# Personal extensions
+
+# all of our zsh files
+#typeset -U config_files
+#config_files=($ZSH/*/*.zsh)
+
+# load the path files
+#for file in ${(M)config_files:#*/path.zsh}; do
+#  source "$file"
+#done
+
+# -----------------------------------------------------------
+# Load custom ZSH configs
+if [ -f $ZSH/zsh/aliases.zsh ]; then
+  source "$ZSH/zsh/aliases.zsh"
+fi
+
+if [ -f $ZSH/macos/crashlogs.zsh ]; then
+  source "$ZSH/macos/crashlogs.zsh"
+fi
+
+
+# -----------------------------------------------------------
+# Adjust paths to software tools
+# -----------------------------------------------------------
+
+# -----------------------------------------------------------
+# Add custom binaries from dotfiles to system PATH
+if [ -d $ZSH/bin ]; then
+  export PATH="$PATH:$ZSH/bin"
+fi
+
+
+# -----------------------------------------------------------
+if [ -d "/usr/local/bin" ]; then
+  export PATH="/usr/local/bin:$PATH"
+fi
+
+# -----------------------------------------------------------
+# Rust installer & package manager
+if [ -d $HOME/.cargo/bin ]; then
+  export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
+
+# -----------------------------------------------------------
+if [ "$OS" = "darwin" ] ; then
+  # PHP from Homebrew package manager
+  if [ -d /usr/local/opt/php@7.1/bin ]; then
+    export PATH="/usr/local/opt/php@7.1/bin:$PATH"
+  fi
+
+  if [ -d /usr/local/opt/php@7.1/sbin ]; then
+    export PATH="/usr/local/opt/php@7.1/sbin:$PATH"
+  fi
+fi
+
+# -----------------------------------------------------------
+# PHP Composer and other tools located under bin directory
+if [ -d $HOME/bin ]; then
+  export PATH="$HOME/bin:$PATH"
+fi
+
+# PHP Composer global packages
+if [ -d $HOME/.composer/vendor/bin ]; then
+  export PATH="$HOME/.composer/vendor/bin:$PATH"
+fi
+
+
+# -----------------------------------------------------------
+if [ -d /usr/local/sbin ]; then
+  export PATH="/usr/local/sbin:$PATH"
+fi
+
+
+# -----------------------------------------------------------
+if [ "$OS" = "darwin" ] ; then
+  # Python 3.6
+  # - Add binaries installed with pip3 to the PATH
+  if [ -d $HOME/Library/Python/3.6/bin ]; then
+    export PATH="$HOME/Library/Python/3.6/bin:$PATH"
+  fi
+fi
+
+
+# -----------------------------------------------------------
+# nvm (Node Version Manager)
+# - https://github.com/creationix/nvm
+#
+# TODO: look at https://github.com/nodenv/nodenv/wiki/Alternatives
+#
+# Note that loading nvm makes starting new shell much slower!
+
+if [ $DISABLE_NVM = "false" ] ; then
+  if [ -d $HOME/.nvm ]; then
+    export NVM_DIR="$HOME/.nvm"
+
+    # This loads nvm
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  fi
+fi
+
+
+# -----------------------------------------------------------
+# WordPress CLI autocomplete
+# More details: https://make.wordpress.org/cli/handbook/installing/
+#source "$ZSH/zsh/autocomplete/wp-completion.bash"
+
+
+# -----------------------------------------------------------
+# Private configs
+# use .localrc for SUPER SECRET CRAP that you don't
+# want in your public, versioned repo.
+# shellcheck disable=SC1090
+[ -f ~/.localrc ] && . ~/.localrc
