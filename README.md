@@ -7,6 +7,7 @@
 ```sh
 git clone git@github.com:d2s/dot.git ~/.dotfiles
 ln -sf ~/.dotfiles/zsh/zshrc.symlink ~/.zshrc
+ln -sf ~/.dotfiles/git/gitignore_global ~/.gitignore_global
 ```
 
 ## Dependencies
