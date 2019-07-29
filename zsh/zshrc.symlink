@@ -52,10 +52,17 @@ fi
 source "$ZSH/zsh/antigen/antigen.zsh"
 
 # Load the oh-my-zsh's library.
+# - https://github.com/robbyrussell/oh-my-zsh
+# - https://ohmyz.sh/
 antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
+# - https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
+# - https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins-Overview
+# - https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/git
+# - https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/history
 antigen bundle git
+antigen bundle history
 
 # git helper tool for faster workflow
 # - https://github.com/paulirish/git-open#examples
@@ -141,6 +148,7 @@ fi
 
 
 # -----------------------------------------------------------
+# For macOS systems
 if [ "$OS" = "darwin" ] ; then
   # PHP from Homebrew package manager
   if [ -d /usr/local/opt/php@7.1/bin ]; then
@@ -149,6 +157,12 @@ if [ "$OS" = "darwin" ] ; then
 
   if [ -d /usr/local/opt/php@7.1/sbin ]; then
     export PATH="/usr/local/opt/php@7.1/sbin:$PATH"
+  fi
+
+  # Python 3.6
+  # - Add binaries installed with pip3 to the PATH
+  if [ -d $HOME/Library/Python/3.6/bin ]; then
+    export PATH="$HOME/Library/Python/3.6/bin:$PATH"
   fi
 fi
 
@@ -167,16 +181,6 @@ fi
 # -----------------------------------------------------------
 if [ -d /usr/local/sbin ]; then
   export PATH="/usr/local/sbin:$PATH"
-fi
-
-
-# -----------------------------------------------------------
-if [ "$OS" = "darwin" ] ; then
-  # Python 3.6
-  # - Add binaries installed with pip3 to the PATH
-  if [ -d $HOME/Library/Python/3.6/bin ]; then
-    export PATH="$HOME/Library/Python/3.6/bin:$PATH"
-  fi
 fi
 
 
