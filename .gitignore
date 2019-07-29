@@ -1,2 +1,8 @@
 *~
 /notes.md
+
+# Ignore cached files
+/cache
+
+# Cache directory for ext/zcache
+.cache/
