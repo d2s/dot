@@ -8,6 +8,7 @@ alias ll="ls -hl"
 alias la="ls -A"
 alias lla="ls -lah"
 alias l="ls -CF"
+alias dir="ls -al"
 
 
 # -----------------------------------------------------------
