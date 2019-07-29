@@ -81,6 +81,15 @@ alias update_rust="rustup update"
 
 
 # -----------------------------------------------------------
+# PATH management helpers
+# -----------------------------------------------------------
+
+# Print out more easily readable formatted paths
+alias path='echo -e ${PATH//:/\\n}'
+
+
+
+# -----------------------------------------------------------
 # Networking toolkit
 # -----------------------------------------------------------
 
