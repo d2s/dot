@@ -123,18 +123,6 @@ fi
 
 
 # -----------------------------------------------------------
-# For macOS systems
-if [ "$OS" = "darwin" ] ; then
-  # Load ZSH aliases for macOS related tools
-  if [ -f $ZSH/macos/crashlogs.zsh ]; then
-    source "$ZSH/macos/crashlogs.zsh"
-  fi
-fi
-
-
-
-
-# -----------------------------------------------------------
 # Adjust paths to software tools
 # -----------------------------------------------------------
 
@@ -160,6 +148,11 @@ fi
 # -----------------------------------------------------------
 # For macOS systems
 if [ "$OS" = "darwin" ] ; then
+  # Load ZSH aliases for macOS related tools
+  if [ -f $ZSH/macos/crashlogs.zsh ]; then
+    source "$ZSH/macos/crashlogs.zsh"
+  fi
+
   # PHP from Homebrew package manager
   if [ -d /usr/local/opt/php@7.1/bin ]; then
     export PATH="/usr/local/opt/php@7.1/bin:$PATH"
