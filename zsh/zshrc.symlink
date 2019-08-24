@@ -174,7 +174,13 @@ if [ "$OS" = "darwin" ] ; then
   if [ -d $HOME/Library/Python/3.6/bin ]; then
     export PATH="$HOME/Library/Python/3.6/bin:$PATH"
   fi
+
+  # iTerm2 shell integration
+  if [ -f "${HOME}/.iterm2_shell_integration.zsh" ]; then
+    source "${HOME}/.iterm2_shell_integration.zsh"
+  fi
 fi
+
 
 # -----------------------------------------------------------
 # PHP Composer and other tools located under bin directory
