@@ -121,9 +121,17 @@ if [ -f $ZSH/zsh/aliases.zsh ]; then
   source "$ZSH/zsh/aliases.zsh"
 fi
 
-if [ -f $ZSH/macos/crashlogs.zsh ]; then
-  source "$ZSH/macos/crashlogs.zsh"
+
+# -----------------------------------------------------------
+# For macOS systems
+if [ "$OS" = "darwin" ] ; then
+  # Load ZSH aliases for macOS related tools
+  if [ -f $ZSH/macos/crashlogs.zsh ]; then
+    source "$ZSH/macos/crashlogs.zsh"
+  fi
 fi
+
+
 
 
 # -----------------------------------------------------------
