@@ -63,7 +63,7 @@ antigen use oh-my-zsh
 # - https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/history
 antigen bundle git
 antigen bundle history
-antigen bundle npm
+#antigen bundle npm
 antigen bundle yarn
 
 # git helper tool for faster workflow
