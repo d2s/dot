@@ -1,13 +1,18 @@
 # dot
 
-. files
+. files for macOS & Linux environments
 
 ## Setup
 
 ```sh
+
 git clone git@github.com:d2s/dot.git ~/.dotfiles
+git submodule init
+git submodule update
+
 ln -sf ~/.dotfiles/zsh/zshrc.symlink ~/.zshrc
 ln -sf ~/.dotfiles/git/gitignore_global ~/.gitignore_global
+
 ```
 
 ## Dependencies
