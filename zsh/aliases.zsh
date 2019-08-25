@@ -96,7 +96,7 @@ alias path='echo -e ${PATH//:/\\n}'
 # -----------------------------------------------------------
 # Shows my public IP address
 
-export IP_ECHO_SERVICE="https://secure.informaction.com/ipecho/"
+export IP_ECHO_SERVICE="https://api.ipify.org/"
 
 if [ -x "$(command -v curl)" ]; then
   alias miip="curl -o- $IP_ECHO_SERVICE"
