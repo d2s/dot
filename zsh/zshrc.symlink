@@ -126,6 +126,14 @@ fi
 # Adjust paths to software tools
 # -----------------------------------------------------------
 
+if [ "$OS" = "linux" ] ; then
+  # Add custom binaries from Snapcraft https://snapcraft.io/ to PATH
+  if [ -d "/snap/bin" ]; then
+    export PATH="$PATH:/snap/bin"
+  fi
+fi
+
+
 # -----------------------------------------------------------
 # Add custom binaries from dotfiles to system PATH
 if [ -d $ZSH/bin ]; then
