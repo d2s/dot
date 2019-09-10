@@ -95,6 +95,18 @@ antigen apply
 
 # -----------------------------------------------------------
 # Homebrew
+
+DIRECTORY_LINUXBREW="/home/linuxbrew/.linuxbrew"
+DIRECTORY_LINUXBREW_BIN="$DIRECTORY_LINUXBREW/bin"
+
+if [ -d "$DIRECTORY_LINUXBREW_BIN" ]; then
+  # eval \$($(brew --prefix)/bin/brew shellenv)
+  # eval \$(($DIRECTORY_LINUXBREW_BIN)/brew shellenv)
+  #export PATH="$PATH:$DIRECTORY_LINUXBREW_BIN"
+  export PATH="$DIRECTORY_LINUXBREW_BIN:$PATH"
+fi
+
+
 # - https://github.com/drduh/macOS-Security-and-Privacy-Guide#homebrew
 if [ -x "$(command -v brew)" ]; then
   export HOMEBREW_NO_ANALYTICS=1
