@@ -96,12 +96,40 @@ fi
 
 
 # -----------------------------------------------------------
+# npm helpers
+# -----------------------------------------------------------
+
+# List what (top level) packages are installed globally
+alias list-installed-npm-packages="npm ls -g --depth=0."
+
+# List what globally installed packages are outdated
+alias list-outdated-npm-packages="npm outdated -g --depth=0."
+
+# Update outdated globally installed npm packages
+alias update-npm-packages="npm update -g"
+
+
+# -----------------------------------------------------------
+# brew helpers
+# -----------------------------------------------------------
+
+# List what (top level) packages are installed globally
+alias list-installed-brew-packages="brew list"
+
+# List what globally installed packages are outdated
+alias list-outdated-brew-packages="brew outdated"
+
+# Update outdated globally installed npm packages
+alias update-brew-packages="brew update && brew upgrade"
+
+
+
+# -----------------------------------------------------------
 # PATH management helpers
 # -----------------------------------------------------------
 
 # Print out more easily readable formatted paths
 alias path='echo -e ${PATH//:/\\n}'
-
 
 
 # -----------------------------------------------------------
