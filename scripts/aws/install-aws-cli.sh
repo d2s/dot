@@ -1,7 +1,19 @@
-#!/bin/bash
+#!/bin/bash -
+###############################################################################
+# install-aws-cli.sh
+# This script installs AWS CLI tools from the Python package management system
+###############################################################################
+
+# -----------------------------------------------------------
+# Unoffical Bash "strict mode"
+# http://redsymbol.net/articles/unofficial-bash-strict-mode/
+set -euo pipefail
+IFS=$'\t\n' # Stricter IFS settings
+ORIGINAL_IFS=$IFS
 
 # Based on instructions from:
 # - https://docs.aws.amazon.com/cli/latest/userguide/cli-install-macos.html
+# - https://docs.aws.amazon.com/cli/latest/userguide/install-linux.html
 
 if [ -x "$(command -v python3)" ] ; then
   # which python3
