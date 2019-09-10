@@ -2,18 +2,31 @@
 
 . files for macOS & Linux environments
 
+
 ## Setup
 
 ```sh
 
+# Clone the repository to a hidden subdirectory
 git clone git@github.com:d2s/dot.git ~/.dotfiles
+
+# Get the submodules to make sure zsh terminal works properly
 git submodule init
 git submodule update
 
+# Link configuration files
 ln -sf ~/.dotfiles/zsh/zshrc.symlink ~/.zshrc
 ln -sf ~/.dotfiles/git/gitignore_global ~/.gitignore_global
 
+# Install related tools...
+# TODO: Make a installer script for the commonly used tools
+
+# After you have installed Node.js
+# Install CLI tools from npm
+~/.dotfiles/scripts/install-npm-packages.sh
+
 ```
+
 
 ## Dependencies
 
