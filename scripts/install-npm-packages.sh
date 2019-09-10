@@ -1,7 +1,7 @@
 #!/bin/bash -
 ###############################################################################
-# setup.sh
-# This script creates everything needed to get started on a new machine
+# install-npm-packages.sh
+# This script installs npm packages if `npm` command is available
 ###############################################################################
 
 # -----------------------------------------------------------
