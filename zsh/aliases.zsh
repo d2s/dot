@@ -81,6 +81,19 @@ if [ "$(command -v rustup)" ]; then
 fi
 
 
+# -----------------------------------------------------------
+# bat
+#
+# "A cat(1) clone with syntax highlighting and Git integration. "
+# - https://github.com/sharkdp/bat
+# -----------------------------------------------------------
+
+# If `bat` is available
+if [ "$(command -v bat)" ]; then
+  alias cat="bat"
+fi
+
+
 
 # -----------------------------------------------------------
 # PATH management helpers
