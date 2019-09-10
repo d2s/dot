@@ -49,6 +49,8 @@ else
   echo ""
   echo "NOTE: brew is not available! Nothing happened."
   echo "You need to have Homebrew installed (before installing other tools with it)."
-  echo "Read more from the website: https://brew.sh/"
+  echo "Read more from the website:"
+  echo "- https://docs.brew.sh/Homebrew-on-Linux"
+  echo "- https://brew.sh/"
   echo ""
 fi
