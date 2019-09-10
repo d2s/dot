@@ -177,3 +177,35 @@ if [ "$OS" = "linux" ] ; then
 elif [ "$OS" = "darwin" ] ; then
   alias systail="tail -f /var/log/system.log"
 fi
+
+
+# -----------------------------------------------------------
+# Snapcraft aliases
+
+if [ "$OS" = "linux" ] ; then
+  # Allow using different versions at the same time
+  if [ -f /snap/bin/firefox ]; then
+    alias latest-firefox="/snap/bin/firefox"
+  fi
+fi
+
+
+
+# -----------------------------------------------------------
+# Docker aliases
+# -----------------------------------------------------------
+
+# youtube-dl
+# - https://github.com/vimagick/dockerfiles/tree/master/youtube/youtube-dl
+#
+# Usage:
+# - list all formats:
+#   yt -F VIDEOID
+# - Download item:
+#   yt VIDEOID
+alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data vimagick/youtube-dl'
+
+
+
+
+
