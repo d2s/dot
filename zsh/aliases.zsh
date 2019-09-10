@@ -75,8 +75,10 @@ alias update_antigen="antigen update"
 # Rust helpers
 # -----------------------------------------------------------
 
-alias update_rust="rustup update"
-
+# If `rustup` tool is available
+if [ "$(command -v rustup)" ]; then
+  alias update_rust="rustup update"
+fi
 
 
 
