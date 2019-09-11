@@ -13,7 +13,7 @@ ORIGINAL_IFS=$IFS
 
 # -----------------------------------------------------------
 # Go to user account's home directory
-cd $HOME
+cd "$HOME"
 
 # -----------------------------------------------------------
 # Commonly used text strings for the script
@@ -46,7 +46,22 @@ if [ -x "$(command -v apt)" ]; then
   fi
 
   # -----------------------------------------------------------
-  # ...
+  # Code quality checker for shell scripts
+  # - https://github.com/koalaman/shellcheck#user-content-installing
+
+  # What is the apt package name for the application?
+  APT_PACKAGES_SHELLCHECK="shellcheck"
+
+  # If CLI command is not already existing
+  if [ ! -x "$(command -v $APT_PACKAGES_SHELLCHECK)" ]; then
+    # Install related npm packages to get the application
+    echo "$NOTE_APT_INSTALL $APT_PACKAGES_SHELLCHECK"
+    sudo apt install $APT_PACKAGES_SHELLCHECK
+  else
+    echo "$NOTE_COMMAND_EXISTS_ALREADY $APT_PACKAGES_SHELLCHECK"
+  fi
+
+  # -----------------------------------------------------------
 
 else
   echo "NOTE: apt is not available! Nothing happened."
