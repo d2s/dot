@@ -13,7 +13,7 @@ ORIGINAL_IFS=$IFS
 
 # -----------------------------------------------------------
 # Go to user account's home directory
-cd $HOME
+cd "$HOME"
 
 # -----------------------------------------------------------
 # Commonly used text strings for the script
