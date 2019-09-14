@@ -94,6 +94,17 @@ if [ "$(command -v bat)" ]; then
 fi
 
 
+# -----------------------------------------------------------
+# hub
+# -----------------------------------------------------------
+
+# If `hub` is available
+if [ "$(command -v hub)" ]; then
+  alias hc="hub clone"
+  alias hcsub="hub clone --recurse-submodules"
+fi
+
+
 
 # -----------------------------------------------------------
 # npm helpers
