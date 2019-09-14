@@ -46,6 +46,22 @@ if [ -x "$(command -v npm)" ]; then
   fi
 
   # -----------------------------------------------------------
+  # serve directory via HTTP
+  # - https://www.npmjs.com/package/serve
+  # What is the npm package for the application?
+  NPM_PACKAGES_SERVE="serve"
+
+  # If CLI command is not already existing
+  if [ ! -x "$(command -v $NPM_PACKAGES_SERVE)" ]; then
+    # Install related npm packages to get the application
+    echo "$NOTE_NPM_INSTALL $NPM_PACKAGES_SERVE"
+    npm install -g $NPM_PACKAGES_SERVE
+  else
+    echo "$NOTE_COMMAND_EXISTS_ALREADY $NPM_PACKAGES_SERVE"
+  fi
+
+
+  # -----------------------------------------------------------
   # ZEIT Now
   # "a cloud platform for static sites and serverless functions"
   # - https://zeit.co/docs/v2/introduction/
