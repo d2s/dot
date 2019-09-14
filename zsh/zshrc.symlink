@@ -214,6 +214,17 @@ fi
 
 
 # -----------------------------------------------------------
+# hub
+# -----------------------------------------------------------
+
+# If `hub` is available
+if [ "$(command -v hub)" ]; then
+  # Wrap git automatically
+  eval "$(hub alias -s)"
+fi
+
+
+# -----------------------------------------------------------
 # nvm (Node Version Manager)
 # - https://github.com/creationix/nvm
 #
@@ -231,6 +242,17 @@ if [ $DISABLE_NVM = "false" ] ; then
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
   fi
 fi
+
+
+# -----------------------------------------------------------
+# `open` alias for Linux devices, to match the macOS feature
+if [ "$OS" = "linux" ] ; then
+  # If `open-cli` is available
+  if [ "$(command -v open-cli)" ]; then
+    alias open="open-cli"
+  fi
+fi
+
 
 
 # -----------------------------------------------------------
