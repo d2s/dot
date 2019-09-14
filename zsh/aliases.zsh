@@ -128,7 +128,7 @@ alias update-npm-packages="npm update -g"
 alias list-installed-brew-packages="brew list"
 
 # List what globally installed packages are outdated
-alias list-outdated-brew-packages="brew outdated"
+alias list-outdated-brew-packages="brew update && brew outdated"
 
 # Update outdated globally installed npm packages
 alias update-brew-packages="brew update && brew upgrade"
