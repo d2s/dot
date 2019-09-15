@@ -21,6 +21,7 @@ fi
 
 if [ $PROJECTS ] ; then
   alias projects="cd $PROJECTS"
+  alias github="cd $PROJECTS/github.com"
 fi
 
 
