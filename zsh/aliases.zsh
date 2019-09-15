@@ -72,6 +72,23 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 
+# -----------------------------------------------------------
+# GPG
+# -----------------------------------------------------------
+# If `gpg` is available
+if [ "$(command -v gpg)" ]; then
+  # List GPG secret keys from the local system
+  # - https://help.github.com/en/articles/checking-for-existing-gpg-keys
+  alias list-gpg-keys='gpg --list-secret-keys --keyid-format LONG'
+
+  # Print the GPG key ID, in ASCII armor format
+  #
+  # Usage:
+  #   list-export-gpg-key KEYID
+  alias list-export-gpg-key='gpg --armor --export'
+fi
+
+
 
 # -----------------------------------------------------------
 # Antigen helpers
