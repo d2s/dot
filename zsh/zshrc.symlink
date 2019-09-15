@@ -225,6 +225,16 @@ fi
 
 
 # -----------------------------------------------------------
+# GPG
+# -----------------------------------------------------------
+# If `gpg` is available
+if [ "$(command -v gpg)" ]; then
+  # - https://help.github.com/en/articles/telling-git-about-your-signing-key
+  export GPG_TTY=$TTY
+fi
+
+
+# -----------------------------------------------------------
 # nvm (Node Version Manager)
 # - https://github.com/creationix/nvm
 #
