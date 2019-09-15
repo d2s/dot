@@ -37,7 +37,6 @@ fi
 alias ducks="du -cksh * | sort -rn|head -11"
 
 
-
 # -----------------------------------------------------------
 if [ "$(command -v grep)" ]; then
   # grep through history
@@ -89,13 +88,11 @@ if [ "$(command -v gpg)" ]; then
 fi
 
 
-
 # -----------------------------------------------------------
 # Antigen helpers
 # -----------------------------------------------------------
 
 alias update-antigen="antigen update"
-
 
 
 # -----------------------------------------------------------
@@ -132,7 +129,6 @@ if [ "$(command -v hub)" ]; then
 fi
 
 
-
 # -----------------------------------------------------------
 # npm helpers
 # -----------------------------------------------------------
@@ -159,7 +155,6 @@ alias list-outdated-brew-packages="brew update && brew outdated"
 
 # Update outdated globally installed npm packages
 alias update-brew-packages="brew update && brew upgrade"
-
 
 
 # -----------------------------------------------------------
@@ -211,6 +206,22 @@ fi
 
 
 # -----------------------------------------------------------
+# ip (IPROUTE2)
+#
+# - https://linux.die.net/man/8/ip
+# - http://www.policyrouting.org/iproute2.doc.html
+# -----------------------------------------------------------
+# If `ip` is available
+if [ "$(command -v ip)" ]; then
+  # look at protocol addresses
+  alias list-network-address="ip address show"
+
+  # list multicast addresses
+  alias list-network-multicast-address="ip maddress show"
+fi
+
+
+# -----------------------------------------------------------
 # SSH public key to clipboard
 if [ -f ~/.ssh/id_rsa.pub ]; then
   if [ "$OS" = "darwin" ] ; then
@@ -218,7 +229,6 @@ if [ -f ~/.ssh/id_rsa.pub ]; then
   fi
   # TODO: Find similar command for other systems.
 fi
-
 
 
 # -----------------------------------------------------------
@@ -269,7 +279,6 @@ if [ "$OS" = "linux" ] ; then
     alias latest-firefox="/snap/bin/firefox"
   fi
 fi
-
 
 
 # -----------------------------------------------------------
