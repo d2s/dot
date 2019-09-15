@@ -77,7 +77,7 @@ alias egrep='egrep --color=auto'
 # Antigen helpers
 # -----------------------------------------------------------
 
-alias update_antigen="antigen update"
+alias update-antigen="antigen update"
 
 
 
