@@ -239,7 +239,7 @@ if [ "$OS" = "darwin" ] ; then
   if [ -f /usr/sbin/system_profiler ]; then
     alias hardware-info="/usr/sbin/system_profiler SPHardwareDataType"
   fi
-else
+# else
   # alias hardware-info="" # TODO: Find similar tool
 fi
 
@@ -249,7 +249,7 @@ fi
 
 if [ "$OS" = "darwin" ] ; then
   alias top="top -o cpu"
-else
+# else
   # alias top="top"
 fi
 
