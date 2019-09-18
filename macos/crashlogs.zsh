@@ -27,7 +27,8 @@ fi
 # Make backup of crashlogs to ~/Documents/BACKUPS/crashlogs_backup directory
 # Checks first if there are both original source and end-location for files.
 if [ -d ~/Library/Logs/DiagnosticReports -a -d ~/Documents/BACKUPS/crashlogs_backup ]; then
-  crashlogs-backup() { cp -anv ~/Library/Logs/DiagnosticReports/* ~/Documents/BACKUPS/crashlogs_backup;
-                       cp -anv /Library/Logs/DiagnosticReports/* ~/Documents/BACKUPS/crashlogs_backup;
-                     }
-                   fi
+  crashlogs-backup() {
+    cp -anv ~/Library/Logs/DiagnosticReports/* ~/Documents/BACKUPS/crashlogs_backup;
+    cp -anv /Library/Logs/DiagnosticReports/* ~/Documents/BACKUPS/crashlogs_backup;
+  }
+fi
