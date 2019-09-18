@@ -1,11 +1,22 @@
-#!/bin/sh
-
+#!/bin/bash -
+###############################################################################
+# youtube-dl-mp3
+###############################################################################
 # -----------------------------------------------------------
 # Requires:
 # - youtube-dl
 # - ffmpeg (`ffprobe` or `avprobe` needed)
 # -----------------------------------------------------------
 
+# -----------------------------------------------------------
+# Unoffical Bash "strict mode"
+# http://redsymbol.net/articles/unofficial-bash-strict-mode/
+set -euo pipefail
+IFS=$'\t\n' # Stricter IFS settings
+ORIGINAL_IFS=$IFS
+
+# -----------------------------------------------------------
+# If `youtube-dl` is available
 if [ -x "$(command -v youtube-dl)" ] ; then
   echo ""
   echo "Downloading your URL with youtube-dl:"
