@@ -62,6 +62,21 @@ if [ -x "$(command -v apt)" ]; then
   fi
 
   # -----------------------------------------------------------
+  # `pcregrep` Perl 5 compatible regular expressions
+
+  # What is the apt package name for the application?
+  APT_PACKAGES_PCREGREP="pcregrep"
+
+  # If CLI command is not already existing
+  if [ ! -x "$(command -v $APT_PACKAGES_PCREGREP)" ]; then
+    # Install related npm packages to get the application
+    echo "$NOTE_APT_INSTALL $APT_PACKAGES_PCREGREP"
+    sudo apt install $APT_PACKAGES_PCREGREP
+  else
+    echo "$NOTE_COMMAND_EXISTS_ALREADY $APT_PACKAGES_PCREGREP"
+  fi
+
+  # -----------------------------------------------------------
 
 else
   echo "NOTE: apt is not available! Nothing happened."
