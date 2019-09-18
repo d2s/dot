@@ -2,33 +2,44 @@
 # CRASHLOGS
 # macOS Crash logs / Diagnostic Reports
 
-# macOS Diagnostic Reports
-if [ -d /Library/Logs/DiagnosticReports ]; then
-  alias maccrashlogs='cd /Library/Logs/DiagnosticReports'
-fi
-
-# macOS user Diagnostic Reports
-if [ -d ~/Library/Logs/DiagnosticReports ]; then
-  alias macusercrashlogs='cd ~/Library/Logs/DiagnosticReports'
-fi
-
-# macOS user logs
-if [ -d ~/Library/Logs ]; then
-  alias macuserlogs="cd ~/Library/Logs"
-fi
+# -----------------------------------------------------------
+if [ "$SYSTEMTYPE" = "darwin" ] ; then
+  # Variables for commonly used directories
+  DIRECTORY_SYSTEM_DIAGNOSTICREPORTS="/Library/Logs/DiagnosticReports"
+  DIRECTORY_USER_DIAGNOSTICREPORTS="~/Library/Logs/DiagnosticReports"
+  DIRECTORY_USER_LOGS="~/Library/Logs"
+  DIRECTORY_BACKUP_CRASHLOGS="~/Documents/BACKUPS/crashlogs_backup"
 
 
-# Shortcut to crashlogs_backup directory if there is such
-if [ -d ~/Documents/BACKUPS/crashlogs_backup ]; then
-  alias backups-crashlogs="cd ~/Documents/BACKUPS/crashlogs_backup"
-fi
+  # macOS Diagnostic Reports
+  if [ -d $DIRECTORY_SYSTEM_DIAGNOSTICREPORTS ]; then
+    alias maccrashlogs="cd $DIRECTORY_SYSTEM_DIAGNOSTICREPORTS"
+  fi
+
+  # macOS user Diagnostic Reports
+  if [ -d $DIRECTORY_USER_DIAGNOSTICREPORTS ]; then
+    alias macusercrashlogs="cd $DIRECTORY_USER_DIAGNOSTICREPORTS"
+  fi
+
+  # macOS user logs
+  if [ -d $DIRECTORY_USER_LOGS ]; then
+    alias macuserlogs="cd $DIRECTORY_USER_LOGS"
+  fi
 
 
-# Make backup of crashlogs to ~/Documents/BACKUPS/crashlogs_backup directory
-# Checks first if there are both original source and end-location for files.
-if [ -d ~/Library/Logs/DiagnosticReports -a -d ~/Documents/BACKUPS/crashlogs_backup ]; then
-  crashlogs-backup() {
-    cp -anv ~/Library/Logs/DiagnosticReports/* ~/Documents/BACKUPS/crashlogs_backup;
-    cp -anv /Library/Logs/DiagnosticReports/* ~/Documents/BACKUPS/crashlogs_backup;
-  }
+  # Shortcut to crashlogs_backup directory if there is such
+  if [ -d $DIRECTORY_CRASHLOGS_BACKUP ]; then
+    alias backups-crashlogs="cd $DIRECTORY_BACKUP_CRASHLOGS"
+  fi
+
+
+  # Make backup of crashlogs to ~/Documents/BACKUPS/crashlogs_backup directory
+  # Checks first if there are both original source and end-location for files.
+  if [ -d $DIRECTORY_USER_DIAGNOSTICREPORTS -a -d $DIRECTORY_BACKUP_CRASHLOGS ]; then
+    crashlogs-backup() {
+      cp -anv $DIRECTORY_USER_DIAGNOSTICREPORTS/* $DIRECTORY_BACKUP_CRASHLOGS;
+      cp -anv $DIRECTORY_SYSTEM_DIAGNOSTICREPORTS/* $DIRECTORY_BACKUP_CRASHLOGS;
+    }
+  fi
+
 fi
