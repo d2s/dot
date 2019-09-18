@@ -20,6 +20,27 @@ export PLATFORM="$MACHINE-$OS-$OSVERSION"
 
 
 # -----------------------------------------------------------
+# Define reusable values
+# -----------------------------------------------------------
+
+# -----------------------------------------------------------
+# Linux related variables
+# -----------------------------------------------------------
+# If `$OSTYPE` variable string includes word `linux`
+if [[ "$OSTYPE" == *linux* ]]; then
+  export SYSTEMTYPE="linux"
+fi
+
+# -----------------------------------------------------------
+# macOS related variables
+# -----------------------------------------------------------
+# If `$OSTYPE` variable string includes word `darwin`
+if [[ "$OSTYPE" == *darwin* ]]; then
+  export SYSTEMTYPE="darwin"
+fi
+
+
+# -----------------------------------------------------------
 # shortcut to dotfiles path is $ZSH
 export ZSH="$HOME/.dotfiles"
 
@@ -63,7 +84,6 @@ antigen use oh-my-zsh
 # - https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/history
 antigen bundle git
 antigen bundle history
-#antigen bundle npm
 antigen bundle yarn
 
 # git helper tool for faster workflow
@@ -108,7 +128,8 @@ fi
 
 
 # - https://github.com/drduh/macOS-Security-and-Privacy-Guide#homebrew
-if [ -x "$(command -v brew)" ]; then
+# Check if `brew` is available in the user's PATH
+if type -p brew &>/dev/null; then
   export HOMEBREW_NO_ANALYTICS=1
   export HOMEBREW_NO_INSECURE_REDIRECT=1
   export HOMEBREW_CASK_OPTS=--require-sha
@@ -129,16 +150,23 @@ fi
 
 # -----------------------------------------------------------
 # Load custom ZSH configs
-if [ -f $ZSH/zsh/aliases.zsh ]; then
+if [ -f "$ZSH/zsh/aliases.zsh" ]; then
   source "$ZSH/zsh/aliases.zsh"
 fi
+
+
+if [ -f "$ZSH/zsh/helper-functions.zsh" ]; then
+  source "$ZSH/zsh/helper-functions.zsh"
+fi
+
 
 
 # -----------------------------------------------------------
 # Adjust paths to software tools
 # -----------------------------------------------------------
 
-if [ "$OS" = "linux" ] ; then
+# if [ "$OS" = "linux" ] ; then
+if [[ "$OSTYPE" == *linux* ]]; then
   # Add custom binaries from Snapcraft https://snapcraft.io/ to PATH
   if [ -d "/snap/bin" ]; then
     export PATH="$PATH:/snap/bin"
@@ -216,9 +244,8 @@ fi
 # -----------------------------------------------------------
 # hub
 # -----------------------------------------------------------
-
-# If `hub` is available
-if [ "$(command -v hub)" ]; then
+# Check if `hub` is available in the user's PATH
+if type -p hub &>/dev/null; then
   # Wrap git automatically
   eval "$(hub alias -s)"
 fi
@@ -227,8 +254,8 @@ fi
 # -----------------------------------------------------------
 # GPG
 # -----------------------------------------------------------
-# If `gpg` is available
-if [ "$(command -v gpg)" ]; then
+# Check if `gpg` is available in the user's PATH
+if type -p gpg &>/dev/null; then
   # - https://help.github.com/en/articles/telling-git-about-your-signing-key
   export GPG_TTY=$TTY
 fi
@@ -256,9 +283,9 @@ fi
 
 # -----------------------------------------------------------
 # `open` alias for Linux devices, to match the macOS feature
-if [ "$OS" = "linux" ] ; then
-  # If `open-cli` is available
-  if [ "$(command -v open-cli)" ]; then
+if [ "$SYSTEMTYPE" = "linux" ] ; then
+  # Check if `open-cli` is available in the user's PATH
+  if type -p open-cli &>/dev/null; then
     alias open="open-cli"
   fi
 fi

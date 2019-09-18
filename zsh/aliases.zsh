@@ -76,7 +76,7 @@ alias egrep='egrep --color=auto'
 # GPG
 # -----------------------------------------------------------
 # If `gpg` is available
-if [ "$(command -v gpg)" ]; then
+if type -p gpg &>/dev/null; then
   # List GPG secret keys from the local system
   # - https://help.github.com/en/articles/checking-for-existing-gpg-keys
   alias list-gpg-keys='gpg --list-secret-keys --keyid-format LONG'
@@ -101,7 +101,7 @@ alias update-antigen="antigen update"
 # -----------------------------------------------------------
 
 # If `rustup` tool is available
-if [ "$(command -v rustup)" ]; then
+if type -p rustup &>/dev/null; then
   alias update_rust="rustup update"
 fi
 
@@ -114,7 +114,7 @@ fi
 # -----------------------------------------------------------
 
 # If `bat` is available
-if [ "$(command -v bat)" ]; then
+if type -p bat &>/dev/null; then
   alias cat="bat"
 fi
 
@@ -124,7 +124,7 @@ fi
 # -----------------------------------------------------------
 
 # If `hub` is available
-if [ "$(command -v hub)" ]; then
+if type -p hub &>/dev/null; then
   alias hc="hub clone"
   alias hcsub="hub clone --recurse-submodules"
 fi
@@ -175,13 +175,13 @@ alias path='echo -e ${PATH//:/\\n}'
 
 export IP_ECHO_SERVICE="https://api.ipify.org/"
 
-if [ -x "$(command -v curl)" ]; then
+if type -p curl &>/dev/null; then
   alias miip="curl -o- $IP_ECHO_SERVICE"
-elif [ -x "$(command -v wget)" ]; then
+elif type -p wget &>/dev/null; then
   alias miip="wget -qO- $IP_ECHO_SERVICE"
 else
   if [ $DEBUG = "true" ] ; then
-    echo "miip requires either Curl or Wget to work."
+    alias miip='echo "NOTE: miip requires either Curl or Wget to work."'
   fi
 fi
 
@@ -189,7 +189,7 @@ fi
 # -----------------------------------------------------------
 # Networking: port numbers
 
-if [ -x "$(command -v lsof)" ]; then
+if type -p lsof &>/dev/null; then
   # Find what application is using a port
   #
   # Usage:
@@ -213,7 +213,7 @@ fi
 # - http://www.policyrouting.org/iproute2.doc.html
 # -----------------------------------------------------------
 # If `ip` is available
-if [ "$(command -v ip)" ]; then
+if type -p ip &>/dev/null; then
   # look at protocol addresses
   alias list-network-address="ip address show"
 
@@ -254,8 +254,8 @@ if [ "$OS" = "darwin" ] ; then
 fi
 
 # -----------------------------------------------------------
-# List all processes
-if [ "$OS" = "linux" ] ; then
+if [ "$SYSTEMTYPE" = "linux" ] ; then
+  # List all processes
   alias processes_all="ps -AFH"
 else
   alias processes_all="ps -Afjv"
@@ -263,9 +263,9 @@ fi
 
 
 # -----------------------------------------------------------
-# Follow system log activity on a terminal window
-if [ "$OS" = "linux" ] ; then
-  alias systail="tail -f /var/log/syslog"
+if [ "$SYSTEMTYPE" = "linux" ] ; then
+  # Follow system log activity on a terminal window
+  alias systail="sudo tail -f /var/log/syslog"
 elif [ "$OS" = "darwin" ] ; then
   alias systail="tail -f /var/log/system.log"
 fi
@@ -274,7 +274,9 @@ fi
 # -----------------------------------------------------------
 # Snapcraft aliases
 
-if [ "$OS" = "linux" ] ; then
+if [ "$SYSTEMTYPE" = "linux" ] ; then
+  # echo "System is running Linux!"
+
   # Allow using different versions at the same time
   if [ -f /snap/bin/firefox ]; then
     alias latest-firefox="/snap/bin/firefox"
@@ -282,19 +284,26 @@ if [ "$OS" = "linux" ] ; then
 fi
 
 
+
+
 # -----------------------------------------------------------
 # Docker aliases
 # -----------------------------------------------------------
+# If `docker` is available
+if type -p docker &>/dev/null; then
+  # look at protocol addresses
+  # alias list-network-address="ip address show"
 
-# youtube-dl
-# - https://github.com/vimagick/dockerfiles/tree/master/youtube/youtube-dl
-#
-# Usage:
-# - list all formats:
-#   yt -F VIDEOID
-# - Download item:
-#   yt VIDEOID
-alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data vimagick/youtube-dl'
+  # youtube-dl
+  # - https://github.com/vimagick/dockerfiles/tree/master/youtube/youtube-dl
+  #
+  # Usage:
+  # - list all formats:
+  #   yt -F VIDEOID
+  # - Download item:
+  #   yt VIDEOID
+  alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data vimagick/youtube-dl'
+fi
 
 
 
