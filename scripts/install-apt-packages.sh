@@ -77,6 +77,21 @@ if [ -x "$(command -v apt)" ]; then
   fi
 
   # -----------------------------------------------------------
+  # DNS query tools (including `dig`)
+
+  # What is the apt package name for the application?
+  APT_PACKAGES_DNS="dnsutils"
+
+  # If CLI command is not already existing
+  if [ ! -x "$(command -v $APT_PACKAGES_DNS)" ]; then
+    # Install related npm packages to get the application
+    echo "$NOTE_APT_INSTALL $APT_PACKAGES_DNS"
+    sudo apt install $APT_PACKAGES_DNS
+  else
+    echo "$NOTE_COMMAND_EXISTS_ALREADY $APT_PACKAGES_DNS"
+  fi
+
+  # -----------------------------------------------------------
 
 else
   echo "NOTE: apt is not available! Nothing happened."
