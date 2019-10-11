@@ -22,14 +22,17 @@ fi
 if [ $PROJECTS ] ; then
   alias projects="cd $PROJECTS"
   alias github="cd $PROJECTS/github.com"
+  alias github-d2s="cd $PROJECTS/github.com/d2s"
 fi
 
 
 # -----------------------------------------------------------
 # Location related aliases
 
-if [ "$OS" = "darwin" ] ; then
-  # Copy name of current workind directory to clipboard
+# Copy name of current workind directory to clipboard
+if [ "$SYSTEMTYPE" = "linux" ] ; then
+  alias pwdcopy="pwd | xclip -selection clipboard"
+elif [ "$OS" = "darwin" ] ; then
   alias pwdcopy="pwd | pbcopy"
 fi
 
@@ -39,7 +42,8 @@ alias ducks="du -cksh * | sort -rn|head -11"
 
 
 # -----------------------------------------------------------
-if [ "$(command -v grep)" ]; then
+# If `grep` is available
+if type -p grep &>/dev/null; then
   # grep through history
   #
   # Usage:
@@ -223,16 +227,6 @@ fi
 
 
 # -----------------------------------------------------------
-# SSH public key to clipboard
-if [ -f ~/.ssh/id_rsa.pub ]; then
-  if [ "$OS" = "darwin" ] ; then
-    alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to clipboard.'"
-  fi
-  # TODO: Find similar command for other systems.
-fi
-
-
-# -----------------------------------------------------------
 # System information tools
 
 if [ "$OS" = "darwin" ] ; then
@@ -317,8 +311,14 @@ alias untar="tar xvf"
 # SSH Key management
 # -----------------------------------------------------------
 
-# Pipe my public key to clipboard
-alias pubkey="more ~/.ssh/id_rsa.pub | xclip -selection clipboard | echo '=> SSH Public key copied to pasteboard.'"
+# Pipe my SSH public key to clipboard
+if [ -f ~/.ssh/id_rsa.pub ]; then
+  if [ "$SYSTEMTYPE" = "linux" ] ; then
+    alias pubkey="more ~/.ssh/id_rsa.pub | xclip -selection clipboard | echo '=> SSH Public key copied to pasteboard.'"
+  elif [ "$OS" = "darwin" ] ; then
+    alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> SSH Public key copied to pasteboard.'"
+  fi
+fi
 
 # Pipe my private key to clipboard
 # alias prikey="more ~/.ssh/id_rsa | xclip -selection clipboard | echo '=> SSH Private key copied to pasteboard.'"
