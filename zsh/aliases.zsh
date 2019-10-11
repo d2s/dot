@@ -284,6 +284,44 @@ if [ "$SYSTEMTYPE" = "linux" ] ; then
 fi
 
 
+# -----------------------------------------------------------
+# Clipboard handling aliases similar to macOS commands
+
+if [ "$SYSTEMTYPE" = "linux" ] ; then
+  alias pbcopy='xclip -selection clipboard'
+  alias pbpaste='xclip -selection clipboard -o'
+fi
+
+
+# -----------------------------------------------------------
+# Calendar related aliases
+
+# Get week number
+alias week="date +%V"
+
+
+# -----------------------------------------------------------
+# File compression
+# -----------------------------------------------------------
+
+# -----------------------------------------------------------
+# Uncompressing files
+
+# `untar`
+# Usage:
+#   `untar filename.tar`
+alias untar="tar xvf"
+
+
+# -----------------------------------------------------------
+# SSH Key management
+# -----------------------------------------------------------
+
+# Pipe my public key to clipboard
+alias pubkey="more ~/.ssh/id_rsa.pub | xclip -selection clipboard | echo '=> SSH Public key copied to pasteboard.'"
+
+# Pipe my private key to clipboard
+# alias prikey="more ~/.ssh/id_rsa | xclip -selection clipboard | echo '=> SSH Private key copied to pasteboard.'"
 
 
 # -----------------------------------------------------------
