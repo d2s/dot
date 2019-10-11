@@ -45,6 +45,6 @@ ln -sf ~/.dotfiles/git/gitignore_global ~/.gitignore_global
 
 ### Tools
 
-- [antigen][] is used for managing zsh configs.
+- [antigen][] loads zsh configuration and extensions.
 
 [antigen]: https://github.com/zsh-users/antigen "A plugin manager for zsh."
