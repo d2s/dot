@@ -149,6 +149,20 @@ alias update-npm-packages="npm update -g"
 
 
 # -----------------------------------------------------------
+# Yarn
+# -----------------------------------------------------------
+
+# If `yarn` is available
+if type -p yarn &>/dev/null; then
+  # List what (top level) packages are installed globally
+  alias list-installed-yarn-global-packages="yarn global list --depth=0"
+
+  # Update outdated globally installed npm packages
+  alias update-yarn-global-packages="yarn global upgrade-interactive"
+fi
+
+
+# -----------------------------------------------------------
 # brew helpers
 # -----------------------------------------------------------
 
