@@ -284,6 +284,18 @@ fi
 
 
 # -----------------------------------------------------------
+# Yarn
+# -----------------------------------------------------------
+# Check if `yarn` is available in the user's PATH
+if type -p yarn &>/dev/null; then
+  # Add the install location of global binaries to your PATH
+  # More details: https://yarnpkg.com/en/docs/cli/global
+  export PATH="$(yarn global bin):$PATH"
+fi
+
+
+
+# -----------------------------------------------------------
 # `open` alias for Linux devices, to match the macOS feature
 if [ "$SYSTEMTYPE" = "linux" ] ; then
   # Check if `open-cli` is available in the user's PATH
