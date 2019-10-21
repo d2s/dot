@@ -101,6 +101,26 @@ if [ -x "$(command -v npm)" ]; then
   fi
 
   # -----------------------------------------------------------
+  # Preact CLI
+  # - https://preactjs.com/guide/v10/getting-started
+  # - https://www.npmjs.com/package/preact-cli
+  #
+  # What is the CLI command for the application?
+  NPM_PACKAGES_PREACT_COMMAND="preact"
+
+  # What is the npm package for the application?
+  NPM_PACKAGES_PREACT="preact-cli"
+
+  # If CLI command is not already existing
+  if [ ! -x "$(command -v $NPM_PACKAGES_PREACT_COMMAND)" ]; then
+    # Install related npm packages to get the application
+    echo "$NOTE_NPM_INSTALL $NPM_PACKAGES_PREACT"
+    npm install -g $NPM_PACKAGES_PREACT
+  else
+    echo "$NOTE_COMMAND_EXISTS_ALREADY $NPM_PACKAGES_PREACT_COMMAND"
+  fi
+
+  # -----------------------------------------------------------
   # ...
 
 else
