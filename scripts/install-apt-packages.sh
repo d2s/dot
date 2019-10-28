@@ -24,8 +24,6 @@ NOTE_COMMAND_EXISTS_ALREADY="NOTE: already installed:"
 # TODO: Make a wrapper function that improves the installation process consistency
 # APT_COMMAND_FOR_INSTALLING="$(sudo apt install)"
 
-
-
 # -----------------------------------------------------------
 # If `apt` command is available
 if [ -x "$(command -v apt)" ]; then
@@ -38,7 +36,7 @@ if [ -x "$(command -v apt)" ]; then
 
   # If CLI command is not already existing
   if [ ! -x "$(command -v $APT_PACKAGES_WHOIS)" ]; then
-    # Install related npm packages to get the application
+    # Install related apt packages to get the application
     echo "$NOTE_APT_INSTALL $APT_PACKAGES_WHOIS"
     sudo apt install $APT_PACKAGES_WHOIS
   else
@@ -54,7 +52,7 @@ if [ -x "$(command -v apt)" ]; then
 
   # If CLI command is not already existing
   if [ ! -x "$(command -v $APT_PACKAGES_SHELLCHECK)" ]; then
-    # Install related npm packages to get the application
+    # Install related apt packages to get the application
     echo "$NOTE_APT_INSTALL $APT_PACKAGES_SHELLCHECK"
     sudo apt install $APT_PACKAGES_SHELLCHECK
   else
@@ -69,7 +67,7 @@ if [ -x "$(command -v apt)" ]; then
 
   # If CLI command is not already existing
   if [ ! -x "$(command -v $APT_PACKAGES_PCREGREP)" ]; then
-    # Install related npm packages to get the application
+    # Install related apt packages to get the application
     echo "$NOTE_APT_INSTALL $APT_PACKAGES_PCREGREP"
     sudo apt install $APT_PACKAGES_PCREGREP
   else
@@ -87,7 +85,7 @@ if [ -x "$(command -v apt)" ]; then
 
   # If CLI command is not already existing
   if [ ! -x "$(command -v $APT_PACKAGES_DNS_COMMAND)" ]; then
-    # Install related npm packages to get the application
+    # Install related apt packages to get the application
     echo "$NOTE_APT_INSTALL $APT_PACKAGES_DNS"
     sudo apt install $APT_PACKAGES_DNS
   else
@@ -105,7 +103,7 @@ if [ -x "$(command -v apt)" ]; then
 
   # If CLI command is not already existing
   if [ ! -x "$(command -v $APT_PACKAGES_CHROMIUM_COMMAND)" ]; then
-    # Install related npm packages to get the application
+    # Install related apt packages to get the application
     echo "$NOTE_APT_INSTALL $APT_PACKAGES_CHROMIUM"
     sudo apt install $APT_PACKAGES_CHROMIUM
   else
