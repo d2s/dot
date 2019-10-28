@@ -79,16 +79,37 @@ if [ -x "$(command -v apt)" ]; then
   # -----------------------------------------------------------
   # DNS query tools (including `dig`)
 
+  # What is the command for starting the application?
+  APT_PACKAGES_DNS_COMMAND="dig"
+
   # What is the apt package name for the application?
   APT_PACKAGES_DNS="dnsutils"
 
   # If CLI command is not already existing
-  if [ ! -x "$(command -v $APT_PACKAGES_DNS)" ]; then
+  if [ ! -x "$(command -v $APT_PACKAGES_DNS_COMMAND)" ]; then
     # Install related npm packages to get the application
     echo "$NOTE_APT_INSTALL $APT_PACKAGES_DNS"
     sudo apt install $APT_PACKAGES_DNS
   else
-    echo "$NOTE_COMMAND_EXISTS_ALREADY $APT_PACKAGES_DNS"
+    echo "$NOTE_COMMAND_EXISTS_ALREADY $APT_PACKAGES_DNS_COMMAND"
+  fi
+
+  # -----------------------------------------------------------
+  # Chromium (web browser)
+
+  # What is the command for starting the application?
+  APT_PACKAGES_CHROMIUM_COMMAND="chromium"
+
+  # What is the apt package name(s) for the application?
+  APT_PACKAGES_CHROMIUM="chromium chromium-sandbox"
+
+  # If CLI command is not already existing
+  if [ ! -x "$(command -v $APT_PACKAGES_CHROMIUM_COMMAND)" ]; then
+    # Install related npm packages to get the application
+    echo "$NOTE_APT_INSTALL $APT_PACKAGES_CHROMIUM"
+    sudo apt install $APT_PACKAGES_CHROMIUM
+  else
+    echo "$NOTE_COMMAND_EXISTS_ALREADY $APT_PACKAGES_CHROMIUM_COMMAND"
   fi
 
   # -----------------------------------------------------------
