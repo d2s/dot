@@ -129,6 +129,27 @@ if [ -x "$(command -v apt)" ]; then
   fi
 
   # -----------------------------------------------------------
+  # cowsay (configurable talking cow)
+
+  # What is the command for starting the application?
+  APT_PACKAGES_COWSAY_COMMAND="cowsay"
+
+  # What is the apt package name(s) for the application?
+  APT_PACKAGES_COWSAY="cowsay"
+
+  # If the package is not already installed
+  if [[ ! "$(dpkg -s $APT_PACKAGES_COWSAY_COMMAND | grep Status)" == "$PACKAGE_STATUS_INSTALL_OK" ]]; then
+    echo "$NOTE_LINESPACE"
+    # Install related apt packages to get the application
+    echo "$NOTE_APT_INSTALL $APT_PACKAGES_COWSAY"
+    sudo apt install "$APT_PACKAGES_COWSAY"
+    echo "$NOTE_LINESPACE"
+  else
+    echo "$NOTE_PACKAGE_EXISTS_ALREADY $APT_PACKAGES_COWSAY_COMMAND"
+    echo "$NOTE_LINESPACE"
+  fi
+
+  # -----------------------------------------------------------
 
 else
   echo "NOTE: apt is not available! Nothing happened."
