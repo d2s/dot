@@ -6,3 +6,6 @@
 
 # Cache directory for ext/zcache
 .cache/
+
+# Temporary notes while making improvements
+./NOTES.md
