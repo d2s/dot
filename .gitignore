@@ -9,3 +9,8 @@
 
 # Temporary notes while making improvements
 ./NOTES.md
+
+# Ignore Zsh related files
+zsh/zplugin/plugins
+zsh/zplugin/root_completions
+zsh/zplugin/snippets/plugins
