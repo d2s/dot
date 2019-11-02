@@ -15,11 +15,11 @@ alias dir="ls -al"
 # Jump to favorite locations
 # -----------------------------------------------------------
 
-if [ $ZSH ] ; then
+if [ "$ZSH" ] ; then
   alias dotfiles="cd $ZSH"
 fi
 
-if [ $PROJECTS ] ; then
+if [ "$PROJECTS" ] ; then
   alias projects="cd $PROJECTS"
   alias github="cd $PROJECTS/github.com"
   alias github-d2s="cd $PROJECTS/github.com/d2s"
@@ -50,7 +50,7 @@ if type -p grep &>/dev/null; then
   #   hf KEYWORD
   #
   function hf() {
-    history | grep $1
+    history | grep "$1"
   }
 fi
 
@@ -94,19 +94,12 @@ fi
 
 
 # -----------------------------------------------------------
-# Antigen helpers
-# -----------------------------------------------------------
-
-alias update-antigen="antigen update"
-
-
-# -----------------------------------------------------------
 # Rust helpers
 # -----------------------------------------------------------
 
 # If `rustup` tool is available
 if type -p rustup &>/dev/null; then
-  alias update_rust="rustup update"
+  alias update-rust="rustup update"
 fi
 
 
@@ -177,6 +170,49 @@ alias update-brew-packages="brew update && brew upgrade"
 
 
 # -----------------------------------------------------------
+# Debian package management helpers
+# -----------------------------------------------------------
+
+if [ "$SYSTEMTYPE" = "linux" ] ; then
+  # If `apt` is available
+  if type -p apt &>/dev/null; then
+    # Show Debian package details
+    alias details="apt-cache show"
+    # Show changelog for a Debian package
+    alias changelog="apt changelog"
+  fi
+fi
+
+
+# -----------------------------------------------------------
+# zsh package management helpers
+# - This updates zsh related tools
+# -----------------------------------------------------------
+
+update-zsh()
+{
+  printf "\\n Updating zsh plugins \\n"
+  zplugin self-update
+  zplugin update
+}
+
+
+# -----------------------------------------------------------
+# Various tools
+# -----------------------------------------------------------
+
+if type -p telnet &>/dev/null; then
+  # MapSCII "The whole world in your console"
+  # - https://github.com/rastapasta/mapscii
+  alias worldmap="telnet mapscii.me"
+else
+  if [ "$DEBUG" = "true" ] ; then
+    alias worldmap='echo "NOTE: worldmap requires application: telnet"'
+  fi
+fi
+
+
+# -----------------------------------------------------------
 # PATH management helpers
 # -----------------------------------------------------------
 
@@ -198,7 +234,7 @@ if type -p curl &>/dev/null; then
 elif type -p wget &>/dev/null; then
   alias miip="wget -qO- $IP_ECHO_SERVICE"
 else
-  if [ $DEBUG = "true" ] ; then
+  if [ "$DEBUG" = "true" ] ; then
     alias miip='echo "NOTE: miip requires either Curl or Wget to work."'
   fi
 fi
