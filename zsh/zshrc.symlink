@@ -10,13 +10,22 @@ DEBUG=true
 # -----------------------------------------------------------
 # Disable: Node Version Manager (true / false)
 DISABLE_NVM=false
+# DISABLE_NVM=true
 
 # -----------------------------------------------------------
 # Identify operating system and machine type
-export OS=`uname -s | sed -e 's/  */-/g;y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'`
-export OSVERSION=`uname -r`; OSVERSION=`expr "$OSVERSION" : '[^0-9]*\([0-9]*\.[0-9]*\)'`
-export MACHINE=`uname -m | sed -e 's/  */-/g;y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'`
-export PLATFORM="$MACHINE-$OS-$OSVERSION"
+OS=`uname -s | sed -e 's/  */-/g;y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'`
+export OS
+
+OSVERSION=`uname -r`;
+OSVERSION=`expr "$OSVERSION" : '[^0-9]*\([0-9]*\.[0-9]*\)'`
+export OSVERSION
+
+MACHINE=`uname -m | sed -e 's/  */-/g;y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'`
+export MACHINE
+
+PLATFORM="$MACHINE-$OS-$OSVERSION"
+export PLATFORM
 
 
 # -----------------------------------------------------------
@@ -46,7 +55,7 @@ export ZSH="$HOME/.dotfiles"
 
 # -----------------------------------------------------------
 # PROJECTS folder
-if [ -d $HOME/Documents/git ]; then
+if [ -d "$HOME/Documents/git" ]; then
   export PROJECTS="$HOME/Documents/git"
 fi
 
@@ -67,50 +76,30 @@ fi
 
 
 # -----------------------------------------------------------
-# antigen
-# - https://github.com/zsh-users/antigen#usage
+# zplugin
+# - https://github.com/zdharma/zplugin#option-2---manual-installation
 
-source "$ZSH/zsh/antigen/antigen.zsh"
+# initial Zplugin's hash definition, if configuring before loading Zplugin, and then:
+declare -A ZPLGM
+ZPLGM[BIN_DIR]="$ZSH/zplugin/bin"
+ZPLGM[PLUGINS_DIR]="$ZSH/zsh/zplugin/plugins"
+ZPLGM[COMPLETIONS_DIR]="$ZSH/zsh/zplugin/root_completions"
+ZPLGM[SNIPPETS_DIR]="$ZSH/zsh/zplugin/snippets"
+ZPFX="$ZSH/zsh/zplugin/polaris"
 
-# Load the oh-my-zsh's library.
-# - https://github.com/robbyrussell/oh-my-zsh
-# - https://ohmyz.sh/
-antigen use oh-my-zsh
+# Load zplugin itself
+source "$ZSH/zsh/zplugin/bin/zplugin.zsh"
 
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-# - https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
-# - https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins-Overview
-# - https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/git
-# - https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/history
-antigen bundle git
-antigen bundle history
-antigen bundle yarn
+# Two regular plugins loaded without tracking.
+zplugin light zsh-users/zsh-autosuggestions
+zplugin light zdharma/fast-syntax-highlighting
 
-# git helper tool for faster workflow
-# - https://github.com/paulirish/git-open#examples
-antigen bundle paulirish/git-open
+# Plugin history-search-multi-word loaded with tracking.
+# zplugin load zdharma/history-search-multi-word
 
-# zsh-async
-# - “With zsh-async you can run multiple asynchronous jobs”
-# - https://github.com/mafredri/zsh-async
-antigen bundle mafredri/zsh-async
-
-# pure theme for zsh
-# - https://github.com/sindresorhus/pure
-# - (requires zsh-async)
-antigen bundle sindresorhus/pure
-
-# spaceship-zsh-theme
-# - https://github.com/denysdovhan/spaceship-zsh-theme
-# antigen theme https://github.com/denysdovhan/spaceship-zsh-theme spaceship
-
-# Syntax highlighting for Zsh
-# - https://github.com/zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-# Tell antigen that you're done.
-antigen apply
-
+# Load the pure theme, with zsh-async library that's bundled with it.
+zplugin ice pick"async.zsh" src"pure.zsh"
+zplugin light sindresorhus/pure
 
 
 # -----------------------------------------------------------
@@ -176,7 +165,7 @@ fi
 
 # -----------------------------------------------------------
 # Add custom binaries from dotfiles to system PATH
-if [ -d $ZSH/bin ]; then
+if [ -d "$ZSH/bin" ]; then
   export PATH="$PATH:$ZSH/bin"
 fi
 
@@ -188,7 +177,7 @@ fi
 
 # -----------------------------------------------------------
 # Rust installer & package manager
-if [ -d $HOME/.cargo/bin ]; then
+if [ -d "$HOME/.cargo/bin" ]; then
   export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
@@ -197,7 +186,7 @@ fi
 # For macOS systems
 if [ "$OS" = "darwin" ] ; then
   # Load ZSH aliases for macOS related tools
-  if [ -f $ZSH/macos/crashlogs.zsh ]; then
+  if [ -f "$ZSH/macos/crashlogs.zsh" ]; then
     source "$ZSH/macos/crashlogs.zsh"
   fi
 
@@ -212,7 +201,7 @@ if [ "$OS" = "darwin" ] ; then
 
   # Python 3.6
   # - Add binaries installed with pip3 to the PATH
-  if [ -d $HOME/Library/Python/3.6/bin ]; then
+  if [ -d "$HOME/Library/Python/3.6/bin" ]; then
     export PATH="$HOME/Library/Python/3.6/bin:$PATH"
   fi
 
@@ -225,18 +214,18 @@ fi
 
 # -----------------------------------------------------------
 # PHP Composer and other tools located under bin directory
-if [ -d $HOME/bin ]; then
+if [ -d "$HOME/bin" ]; then
   export PATH="$HOME/bin:$PATH"
 fi
 
 # PHP Composer global packages
-if [ -d $HOME/.composer/vendor/bin ]; then
+if [ -d "$HOME/.composer/vendor/bin" ]; then
   export PATH="$HOME/.composer/vendor/bin:$PATH"
 fi
 
 
 # -----------------------------------------------------------
-if [ -d /usr/local/sbin ]; then
+if [ -d "/usr/local/sbin" ]; then
   export PATH="/usr/local/sbin:$PATH"
 fi
 
