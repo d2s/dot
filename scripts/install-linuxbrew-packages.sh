@@ -1,7 +1,7 @@
-#!/bin/bash -
+#!/usr/bin/env bash
 ###############################################################################
 # install-linuxbrew-packages.sh
-# This script installs tools from apt packages if possible
+# This script installs tools from Linux version of Homebrew
 ###############################################################################
 
 # -----------------------------------------------------------

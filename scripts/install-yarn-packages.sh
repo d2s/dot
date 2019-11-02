@@ -1,7 +1,7 @@
-#!/bin/bash -
+#!/usr/bin/env bash
 ###############################################################################
-# install-npm-packages.sh
-# This script installs npm packages if `npm` command is available
+# install-yarn-packages.sh
+# This script installs npm packages with `yarn` if it is available
 ###############################################################################
 
 # -----------------------------------------------------------
