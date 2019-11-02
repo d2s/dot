@@ -63,6 +63,16 @@ alias mv="mv -i"
 
 
 # -----------------------------------------------------------
+# Create directory path, change current path to it
+# Usage:
+#   mkcd something/epic
+function mkcd(){
+  mkdir -p "$1"
+  cd "$1"
+}
+
+
+# -----------------------------------------------------------
 # c = clear the terminal window
 alias c="clear"
 
