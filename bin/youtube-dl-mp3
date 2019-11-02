@@ -1,4 +1,4 @@
-#!/bin/bash -
+#!/usr/bin/env bash
 ###############################################################################
 # youtube-dl-mp3
 ###############################################################################
@@ -13,17 +13,15 @@
 # http://redsymbol.net/articles/unofficial-bash-strict-mode/
 set -euo pipefail
 IFS=$'\t\n' # Stricter IFS settings
+# shellcheck disable=SC2034  # Unused variable needed for the Bash strict mode
 ORIGINAL_IFS=$IFS
 
 # -----------------------------------------------------------
 # If `youtube-dl` is available
 if [ -x "$(command -v youtube-dl)" ] ; then
-  echo ""
-  echo "Downloading your URL with youtube-dl:"
-  echo ""
+  printf "\\nDownloading your URL with youtube-dl:\\n\\n"
   youtube-dl --extract-audio --audio-format mp3 "$@"
 else
-  echo ""
-  echo "You need to have youtube-dl installed."
-  echo "Read more from the website: https://rg3.github.io/youtube-dl/"
+  printf "\\nYou need to have youtube-dl installed.\\n"
+  printf "Read more from the website: https://rg3.github.io/youtube-dl/ \\n"
 fi
