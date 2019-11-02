@@ -1,7 +1,7 @@
-#!/bin/bash -
+#!/usr/bin/env bash
 ###############################################################################
 # install-apt-packages.sh
-# This script installs tools from apt packages if possible
+# This script installs tools from Debian packages if possible
 ###############################################################################
 
 # -----------------------------------------------------------
@@ -17,140 +17,105 @@ ORIGINAL_IFS=$IFS
 cd "$HOME"
 
 # -----------------------------------------------------------
-# Commonly used text strings for the script
-NOTE_APT_INSTALL="sudo apt install"
-NOTE_PACKAGE_EXISTS_ALREADY="NOTE: package already installed:"
-NOTE_LINESPACE=""
-
-# String to compare to check if package already installed
-PACKAGE_STATUS_INSTALL_OK="Status: install ok installed"
+# Update apt package lists
+# Usage:
+#   apt_update
+apt_update() {
+  printf "\\n"
+  printf "Updating apt package lists:"
+  printf "\\n"
+  sudo apt-get update
+  printf "\\n"
+}
 
 # -----------------------------------------------------------
-# TODO: Make a wrapper function that improves the installation process consistency
+# Install apt package defined in string variable
+# Usage:
+#   install_apt_package "package"
+install_apt_package() {
+  printf "\\n"
+  printf "sudo apt-get install %s\\n" "$1"
+  sudo apt-get install "$1"
+  printf "\\n\\n"
+}
+
+# -----------------------------------------------------------
+# Tell user that package has already been installed
+# Usage:
+#   apt_package_already_installed "package"
+apt_package_already_installed() {
+  printf "NOTE: package already installed: %s\\n" "$1"
+  printf "\\n"
+}
+
+# -----------------------------------------------------------
+# If package is not already installed, install it
+# Usage:
+#   if_not_already_installed "package"
+if_not_already_installed() {
+  if [[ ! "$(dpkg -s "$1" | grep Status)" == "Status: install ok installed" ]]; then
+    install_apt_package "$1"
+  else
+    apt_package_already_installed "$1"
+  fi
+}
 
 # -----------------------------------------------------------
 # If `apt` command is available
 if [ -x "$(command -v apt)" ]; then
-  echo "$NOTE_LINESPACE"
+  # Update apt package lists
+  apt_update
 
   # -----------------------------------------------------------
   # `whois` records search tool
-
-  # What is the apt package name for the application?
-  APT_PACKAGES_WHOIS="whois"
-
-  # If the package is not already installed
-  if [[ ! "$(dpkg -s $APT_PACKAGES_WHOIS | grep Status)" == "$PACKAGE_STATUS_INSTALL_OK" ]]; then
-    echo "$NOTE_LINESPACE"
-    # Install related apt packages to get the application
-    echo "$NOTE_APT_INSTALL $APT_PACKAGES_WHOIS"
-    sudo apt install "$APT_PACKAGES_WHOIS"
-    echo "$NOTE_LINESPACE"
-  else
-    echo "$NOTE_PACKAGE_EXISTS_ALREADY $APT_PACKAGES_WHOIS"
-    echo "$NOTE_LINESPACE"
-  fi
+  if_not_already_installed "whois"
 
   # -----------------------------------------------------------
   # Code quality checker for shell scripts
   # - https://github.com/koalaman/shellcheck#user-content-installing
-
-  # What is the apt package name for the application?
-  APT_PACKAGES_SHELLCHECK="shellcheck"
-
-  # If the package is not already installed
-  if [[ ! "$(dpkg -s $APT_PACKAGES_SHELLCHECK | grep Status)" == "$PACKAGE_STATUS_INSTALL_OK" ]]; then
-    echo "$NOTE_LINESPACE"
-    # Install related apt packages to get the application
-    echo "$NOTE_APT_INSTALL $APT_PACKAGES_SHELLCHECK"
-    sudo apt install "$APT_PACKAGES_SHELLCHECK"
-    echo "$NOTE_LINESPACE"
-  else
-    echo "$NOTE_PACKAGE_EXISTS_ALREADY $APT_PACKAGES_SHELLCHECK"
-    echo "$NOTE_LINESPACE"
-  fi
+  if_not_already_installed "shellcheck"
 
   # -----------------------------------------------------------
   # `pcregrep` Perl 5 compatible regular expressions
-
-  # What is the apt package name for the application?
-  APT_PACKAGES_PCREGREP="pcregrep"
-
-  # If the package is not already installed
-  if [[ ! "$(dpkg -s $APT_PACKAGES_PCREGREP | grep Status)" == "$PACKAGE_STATUS_INSTALL_OK" ]]; then
-    echo "$NOTE_LINESPACE"
-    # Install related apt packages to get the application
-    echo "$NOTE_APT_INSTALL $APT_PACKAGES_PCREGREP"
-    sudo apt install "$APT_PACKAGES_PCREGREP"
-    echo "$NOTE_LINESPACE"
-  else
-    echo "$NOTE_PACKAGE_EXISTS_ALREADY $APT_PACKAGES_PCREGREP"
-    echo "$NOTE_LINESPACE"
-  fi
+  if_not_already_installed "pcregrep"
 
   # -----------------------------------------------------------
   # DNS query tools (including `dig`)
-
-  # What is the apt package name for the application?
-  APT_PACKAGES_DNS="dnsutils"
-
-  # If the package is not already installed
-  if [[ ! "$(dpkg -s $APT_PACKAGES_DNS | grep Status)" == "$PACKAGE_STATUS_INSTALL_OK" ]]; then
-    echo "$NOTE_LINESPACE"
-    # Install related apt packages to get the application
-    echo "$NOTE_APT_INSTALL $APT_PACKAGES_DNS"
-    sudo apt install "$APT_PACKAGES_DNS"
-    echo "$NOTE_LINESPACE"
-  else
-    echo "$NOTE_PACKAGE_EXISTS_ALREADY $APT_PACKAGES_DNS"
-    echo "$NOTE_LINESPACE"
-  fi
-
+  if_not_already_installed "dnsutils"
 
   # -----------------------------------------------------------
   # Chromium (web browser)
-
-  # What is the command for starting the application?
-  APT_PACKAGES_CHROMIUM_COMMAND="chromium"
-
-  # What is the apt package name(s) for the application?
-  APT_PACKAGES_CHROMIUM="chromium chromium-sandbox"
-
-  # If the package is not already installed
-  if [[ ! "$(dpkg -s $APT_PACKAGES_CHROMIUM_COMMAND | grep Status)" == "$PACKAGE_STATUS_INSTALL_OK" ]]; then
-    echo "$NOTE_LINESPACE"
-    # Install related apt packages to get the application
-    echo "$NOTE_APT_INSTALL $APT_PACKAGES_CHROMIUM"
-    sudo apt install "$APT_PACKAGES_CHROMIUM"
-    echo "$NOTE_LINESPACE"
-  else
-    echo "$NOTE_PACKAGE_EXISTS_ALREADY $APT_PACKAGES_CHROMIUM_COMMAND"
-    echo "$NOTE_LINESPACE"
-  fi
+  if_not_already_installed "chromium"
+  if_not_already_installed "chromium-sandbox"
 
   # -----------------------------------------------------------
   # cowsay (configurable talking cow)
-
-  # What is the command for starting the application?
-  APT_PACKAGES_COWSAY_COMMAND="cowsay"
-
-  # What is the apt package name(s) for the application?
-  APT_PACKAGES_COWSAY="cowsay"
-
-  # If the package is not already installed
-  if [[ ! "$(dpkg -s $APT_PACKAGES_COWSAY_COMMAND | grep Status)" == "$PACKAGE_STATUS_INSTALL_OK" ]]; then
-    echo "$NOTE_LINESPACE"
-    # Install related apt packages to get the application
-    echo "$NOTE_APT_INSTALL $APT_PACKAGES_COWSAY"
-    sudo apt install "$APT_PACKAGES_COWSAY"
-    echo "$NOTE_LINESPACE"
-  else
-    echo "$NOTE_PACKAGE_EXISTS_ALREADY $APT_PACKAGES_COWSAY_COMMAND"
-    echo "$NOTE_LINESPACE"
-  fi
+  if_not_already_installed "cowsay"
 
   # -----------------------------------------------------------
+  # Powerline fonts for vim and command line
+  if_not_already_installed "powerline"
+
+  # -----------------------------------------------------------
+  # Zsh terminal emulator
+  if_not_already_installed "zsh"
+
+  # -----------------------------------------------------------
+  # Other tools
+  if_not_already_installed "curl"
+  if_not_already_installed "git"
+  if_not_already_installed "w3m-img"
+  if_not_already_installed "ack"
+
+  # -----------------------------------------------------------
+  # Debian package management tools
+  # - http://jxf.me/entries/better-apt-ubuntu/
+  # Note: Adjust settings after installation with
+  #       dpkg-reconfigure apt-listchanges
+  if_not_already_installed "apt-listchanges"
 
 else
+  # Exit with error code when apt is not available
   echo "NOTE: apt is not available! Nothing happened."
+  exit 1
 fi
