@@ -8,7 +8,7 @@
 .cache/
 
 # Temporary notes while making improvements
-./NOTES.md
+/NOTES.md
 
 # Ignore Zsh related files
 zsh/zplugin/plugins
