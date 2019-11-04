@@ -15,6 +15,9 @@ git clone git@github.com:d2s/dot.git ~/.dotfiles
 git submodule init
 git submodule update
 
+# Install Zplugin
+git clone https://github.com/zdharma/zplugin.git ~/.dotfiles/zsh/zplugin/bin
+
 # Link configuration files
 ln -sf ~/.dotfiles/zsh/zshrc.symlink ~/.zshrc
 ln -sf ~/.dotfiles/git/gitignore_global ~/.gitignore_global
@@ -22,6 +25,9 @@ ln -sf ~/.dotfiles/git/gitignore_global ~/.gitignore_global
 # Install related tools...
 # If on a Debian-based Linux system:
 ~/.dotfiles/scripts/install-apt-packages.sh
+
+# Change default terminal shell to Zsh
+chsh -s $(which zsh)
 
 # After you have installed Node.js
 # Install CLI tools from npm
@@ -31,6 +37,9 @@ ln -sf ~/.dotfiles/git/gitignore_global ~/.gitignore_global
 
 
 ## Dependencies
+
+- [Zplugin](https://github.com/zdharma/zplugin)
+  - "Flexible Zsh plugin manager with clean fpath, reports, completion management, turbo mode, services"
 
 ### Node.js
 
@@ -45,8 +54,3 @@ ln -sf ~/.dotfiles/git/gitignore_global ~/.gitignore_global
   - Uncompress zip file.
   - Open `fonts/FontAwesome.otf` file to add it to the operating system.
 
-### Tools
-
-- [antigen][] loads zsh configuration and extensions.
-
-[antigen]: https://github.com/zsh-users/antigen "A plugin manager for zsh."
