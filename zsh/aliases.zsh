@@ -63,6 +63,19 @@ alias mv="mv -i"
 
 
 # -----------------------------------------------------------
+# Show amount of memory usage in megabytes
+alias free="free -m"
+
+
+# -----------------------------------------------------------
+# Calculate sha1 of a file(s)
+# Usage:
+#   sha1 filename
+#   sha1 *.md
+alias sha1='openssl sha1'
+
+
+# -----------------------------------------------------------
 # Create directory path, change current path to it
 # Usage:
 #   mkcd something/epic
@@ -365,6 +378,10 @@ alias week="date +%V"
 # Usage:
 #   `untar filename.tar`
 alias untar="tar xvf"
+
+alias tar-extract-gz="tar -zxvf"
+alias tar-compress-gz="tar -zcvf"
+
 
 
 # -----------------------------------------------------------
