@@ -89,7 +89,7 @@ if [ -x "$(command -v zypper)" ]; then
   install_opensuse_package "git"
   install_opensuse_package "curl"
   install_opensuse_package "zsh"
-  install_opensuse_package "shellcheck"
+  install_opensuse_package "ShellCheck"
   install_opensuse_package "whois"
   install_opensuse_package "ack"
 else
