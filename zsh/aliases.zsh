@@ -214,6 +214,9 @@ if [[ "$DISTRIBUTION" == "openSUSE" ]]; then
 
     # Show openSUSE package details
     alias details="zypper info"
+
+    # Show the full changelog for a RPM-based openSUSE package
+    alias changelog="rpm -q --changelog"
   fi
 fi
 
