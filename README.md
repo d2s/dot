@@ -10,7 +10,8 @@
 # Clone the repository to a hidden subdirectory
 git clone git@github.com:d2s/dot.git ~/.dotfiles
 
-# Get the submodules to make sure zsh terminal works properly
+# Get the submodules
+# NOTE: colors palette, might not be needed anymore
 git submodule init
 git submodule update
 
@@ -19,7 +20,8 @@ ln -sf ~/.dotfiles/zsh/zshrc.symlink ~/.zshrc
 ln -sf ~/.dotfiles/git/gitignore_global ~/.gitignore_global
 
 # Install related tools...
-# TODO: Make a installer script for the commonly used tools
+# If on a Debian-based Linux system:
+~/.dotfiles/scripts/install-apt-packages.sh
 
 # After you have installed Node.js
 # Install CLI tools from npm
