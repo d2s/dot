@@ -198,17 +198,23 @@ fi
 # openSUSE package management helpers
 # -----------------------------------------------------------
 
-if type -p zypper &>/dev/null; then
-  # -----------------------------------------------------------
-  # Install openSUSE package defined in string variable
-  # Usage:
-  #   install-opensuse-package "package"
-  install-opensuse-package() {
-    printf "\\n"
-    printf "sudo zypper in %s\\n" "$1"
-    sudo zypper in "$1"
-    printf "\\n\\n"
-  }
+if [[ "$DISTRIBUTION" == "openSUSE" ]]; then
+  # If `zypper` is available
+  if type -p zypper &>/dev/null; then
+    # -----------------------------------------------------------
+    # Install openSUSE package defined in string variable
+    # Usage:
+    #   install-opensuse-package "package"
+    install-opensuse-package() {
+      printf "\\n"
+      printf "sudo zypper in %s\\n" "$1"
+      sudo zypper in "$1"
+      printf "\\n\\n"
+    }
+
+    # Show openSUSE package details
+    alias details="zypper info"
+  fi
 fi
 
 
@@ -216,7 +222,7 @@ fi
 # Debian package management helpers
 # -----------------------------------------------------------
 
-if [ "$SYSTEMTYPE" = "linux" ] ; then
+if [[ "$DISTRIBUTION" == "Debian" ]]; then
   # If `apt` is available
   if type -p apt &>/dev/null; then
     # Show Debian package details
