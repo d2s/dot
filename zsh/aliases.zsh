@@ -195,12 +195,12 @@ fi
 
 
 # -----------------------------------------------------------
-# OpenSUSE package management helpers
+# openSUSE package management helpers
 # -----------------------------------------------------------
 
 if type -p zypper &>/dev/null; then
   # -----------------------------------------------------------
-  # Install OpenSUSE package defined in string variable
+  # Install openSUSE package defined in string variable
   # Usage:
   #   install-opensuse-package "package"
   install-opensuse-package() {
