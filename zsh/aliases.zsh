@@ -179,17 +179,37 @@ fi
 
 
 # -----------------------------------------------------------
-# brew helpers
+# Homebrew package management helpers
 # -----------------------------------------------------------
 
-# List what (top level) packages are installed globally
-alias list-installed-brew-packages="brew list"
+if type -p brew &>/dev/null; then
+  # List what (top level) packages are installed globally
+  alias list-installed-brew-packages="brew list"
 
-# List what globally installed packages are outdated
-alias list-outdated-brew-packages="brew update && brew outdated"
+  # List what globally installed packages are outdated
+  alias list-outdated-brew-packages="brew update && brew outdated"
 
-# Update outdated globally installed npm packages
-alias update-brew-packages="brew update && brew upgrade"
+  # Update outdated globally installed npm packages
+  alias update-brew-packages="brew update && brew upgrade"
+fi
+
+
+# -----------------------------------------------------------
+# OpenSUSE package management helpers
+# -----------------------------------------------------------
+
+if type -p zypper &>/dev/null; then
+  # -----------------------------------------------------------
+  # Install OpenSUSE package defined in string variable
+  # Usage:
+  #   install-opensuse-package "package"
+  install-opensuse-package() {
+    printf "\\n"
+    printf "sudo zypper in %s\\n" "$1"
+    sudo zypper in "$1"
+    printf "\\n\\n"
+  }
+fi
 
 
 # -----------------------------------------------------------
