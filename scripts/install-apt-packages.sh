@@ -66,48 +66,48 @@ if [ -x "$(command -v apt)" ]; then
   # Update apt package lists
   apt_update
 
-  # -----------------------------------------------------------
   # `whois` records search tool
   if_not_already_installed "whois"
 
-  # -----------------------------------------------------------
   # Code quality checker for shell scripts
   # - https://github.com/koalaman/shellcheck#user-content-installing
   if_not_already_installed "shellcheck"
 
-  # -----------------------------------------------------------
   # `pcregrep` Perl 5 compatible regular expressions
   if_not_already_installed "pcregrep"
 
-  # -----------------------------------------------------------
   # DNS query tools (including `dig`)
   if_not_already_installed "dnsutils"
 
-  # -----------------------------------------------------------
   # Chromium (web browser)
   if_not_already_installed "chromium"
   if_not_already_installed "chromium-sandbox"
 
-  # -----------------------------------------------------------
   # cowsay (configurable talking cow)
   if_not_already_installed "cowsay"
 
-  # -----------------------------------------------------------
   # Powerline fonts for vim and command line
   if_not_already_installed "powerline"
 
-  # -----------------------------------------------------------
   # Zsh terminal emulator
   if_not_already_installed "zsh"
 
-  # -----------------------------------------------------------
-  # Other tools
+  # Debugging tools
+  if_not_already_installed "htop"
+  if_not_already_installed "strace"
+
+  # Downloaderes
   if_not_already_installed "curl"
+
+  # Version control
   if_not_already_installed "git"
-  if_not_already_installed "w3m-img"
+
+  # File search tools
   if_not_already_installed "ack"
 
-  # -----------------------------------------------------------
+  # inline images for w3m on terminal emulator
+  if_not_already_installed "w3m-img"
+
   # Debian package management tools
   # - http://jxf.me/entries/better-apt-ubuntu/
   # Note: Adjust settings after installation with
