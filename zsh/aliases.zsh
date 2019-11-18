@@ -91,6 +91,12 @@ alias c="clear"
 
 
 # -----------------------------------------------------------
+# Environmental variables
+alias showenv="env | sort"
+alias showpath='echo $PATH | tr : "\n"'
+
+
+# -----------------------------------------------------------
 # grep
 # -----------------------------------------------------------
 # Always enable colored `grep` output
@@ -230,6 +236,7 @@ if [[ "$DISTRIBUTION" == "Debian" ]]; then
   if type -p apt &>/dev/null; then
     # Show Debian package details
     alias details="apt-cache show"
+
     # Show changelog for a Debian package
     alias changelog="apt changelog"
   fi
@@ -241,12 +248,26 @@ fi
 # - This updates zsh related tools
 # -----------------------------------------------------------
 
-update-zsh()
-{
+update-zsh() {
   printf "\\n Updating zsh plugins \\n"
   zplugin self-update
   zplugin update
 }
+
+
+# -----------------------------------------------------------
+# Word list search
+# - Quickly look what words include the given letters
+#
+# Usage:
+#   word full
+# -----------------------------------------------------------
+word() {
+  grep "$1" /usr/share/dict/words
+}
+
+# if [ -d "/usr/share/dict/words" ]; then
+# fi
 
 
 # -----------------------------------------------------------
