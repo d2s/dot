@@ -96,7 +96,7 @@ if [ -x "$(command -v apt)" ]; then
   if_not_already_installed "htop"
   if_not_already_installed "strace"
 
-  # Downloaderes
+  # Downloaders
   if_not_already_installed "curl"
 
   # Version control
