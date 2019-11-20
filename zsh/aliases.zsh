@@ -153,6 +153,7 @@ fi
 if type -p hub &>/dev/null; then
   alias hc="hub clone"
   alias hcsub="hub clone --recurse-submodules"
+  alias hug="hub"
 fi
 
 
