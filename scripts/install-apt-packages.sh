@@ -105,6 +105,10 @@ if [ -x "$(command -v apt)" ]; then
   # File search tools
   if_not_already_installed "ack"
 
+  # NCurses Disk Usage
+  # - https://dev.yorhel.nl/ncdu
+  if_not_already_installed "ncdu"
+
   # inline images for w3m on terminal emulator
   if_not_already_installed "w3m-img"
 
