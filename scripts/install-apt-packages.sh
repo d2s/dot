@@ -29,7 +29,7 @@ apt_update() {
 }
 
 # -----------------------------------------------------------
-# Install apt package defined in string variable
+# Install package defined in a string variable
 # Usage:
 #   install_apt_package "package"
 install_apt_package() {
