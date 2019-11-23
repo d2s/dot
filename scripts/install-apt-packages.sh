@@ -101,6 +101,7 @@ if [ -x "$(command -v apt)" ]; then
 
   # Version control
   if_not_already_installed "git"
+  if_not_already_installed "gitg"
 
   # File search tools
   if_not_already_installed "ack"
