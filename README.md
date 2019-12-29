@@ -6,6 +6,8 @@
 ## Setup
 
 ```sh
+# If you don't already have Git installed:
+# sudo apt install git
 
 # Clone the repository to a hidden subdirectory
 git clone git@github.com:d2s/dot.git ~/.dotfiles
