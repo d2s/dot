@@ -23,6 +23,8 @@ if [ "$PROJECTS" ] ; then
   alias projects="cd $PROJECTS"
   alias github="cd $PROJECTS/github.com"
   alias github-d2s="cd $PROJECTS/github.com/d2s"
+  alias gitlab="cd $PROJECTS/gitlab.com"
+  alias bitbucket="cd $PROJECTS/bitbucket.org"
 fi
 
 
