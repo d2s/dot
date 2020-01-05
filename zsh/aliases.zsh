@@ -160,6 +160,39 @@ fi
 
 
 # -----------------------------------------------------------
+# git
+# -----------------------------------------------------------
+
+# If `git` is available
+if type -p git &>/dev/null; then
+  # alias fixup="git commit --fixup"
+  alias gb="git branch"
+  alias gcan="git commit --amend --no-edit"
+  # alias gcm="git commit -m"
+  alias gco="git checkout"
+  # alias gcop="git checkout --p"
+  # alias gfa="git fetch --all --p"
+  # alias gkdm="git kit del--merged"
+  alias gl="git log --oneline --color --decorate --graph"
+  alias gp="git pull --ff-only --all -p"
+  # alias gpa="git push --u d2s HEAD"
+  # alias gph="git push --u origin HEAD"
+  # alias gpuo="git push --u origin"
+  # alias gpv="git push --u anotheruser HEAD"
+  # alias gre="git rebase"
+  # alias grea="git rebase --abort"
+  # alias grec="git rebase --continue"
+  # alias grem="git rebase --i master"
+  # alias greom="git rebase --i origin/master"
+  # alias greum="git rebase --i upstream/master"
+  # alias grh="git reset HEAD~"
+  alias gs="git status"
+  alias gst="git status"
+fi
+
+
+
+# -----------------------------------------------------------
 # npm helpers
 # -----------------------------------------------------------
 
