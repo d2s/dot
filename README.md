@@ -12,6 +12,10 @@
 # Clone the repository to a hidden subdirectory
 git clone git@github.com:d2s/dot.git ~/.dotfiles
 
+# Another option is to use HTTPS instead of SSH
+# if you haven't added SSH public key to GitHub's user settings
+# git clone https://github.com/d2s/dot.git ~/.dotfiles
+
 # Get the submodules
 # NOTE: colors palette, might not be needed anymore
 git submodule init
