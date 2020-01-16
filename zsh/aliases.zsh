@@ -23,6 +23,8 @@ if [ "$PROJECTS" ] ; then
   alias projects="cd $PROJECTS"
   alias github="cd $PROJECTS/github.com"
   alias github-d2s="cd $PROJECTS/github.com/d2s"
+  alias knowledge="cd $PROJECTS/github.com/d2s/knowledge"
+  alias companies="cd $PROJECTS/github.com/d2s/companies"
   alias gitlab="cd $PROJECTS/gitlab.com"
   alias bitbucket="cd $PROJECTS/bitbucket.org"
 fi
@@ -186,6 +188,9 @@ if type -p git &>/dev/null; then
   # alias greom="git rebase --i origin/master"
   # alias greum="git rebase --i upstream/master"
   # alias grh="git reset HEAD~"
+  alias git-remote-list="git remote -v"
+  alias git-remote-set-url-origin="git remote set-url origin"
+  alias git-remote-set-url-upstream="git remote set-url upstream"
   alias gs="git status"
   alias gst="git status"
 fi
