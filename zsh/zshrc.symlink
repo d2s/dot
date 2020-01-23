@@ -196,6 +196,13 @@ if [ -d "$HOME/.cargo/bin" ]; then
   export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
+# -----------------------------------------------------------
+# Ruby installer
+# - Install instructions: https://github.com/rbenv/rbenv#basic-github-checkout
+if [ -d "$HOME/.rbenv/bin" ]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
 
 # -----------------------------------------------------------
 # For macOS systems
