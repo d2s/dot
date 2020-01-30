@@ -9,8 +9,8 @@ DEBUG=true
 
 # -----------------------------------------------------------
 # Disable: Node Version Manager (true / false)
-DISABLE_NVM=false
-# DISABLE_NVM=true
+# DISABLE_NVM=false
+DISABLE_NVM=true
 
 # -----------------------------------------------------------
 # Identify operating system and machine type
