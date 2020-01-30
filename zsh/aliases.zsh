@@ -17,6 +17,8 @@ alias dir="ls -al"
 
 if [ "$ZSH" ] ; then
   alias dotfiles="cd $ZSH"
+  alias dotfiles-scripts="cd $ZSH/scripts"
+  alias dotfiles-zsh="cd $ZSH/zsh"
 fi
 
 if [ "$PROJECTS" ] ; then
@@ -28,6 +30,36 @@ if [ "$PROJECTS" ] ; then
   alias gitlab="cd $PROJECTS/gitlab.com"
   alias bitbucket="cd $PROJECTS/bitbucket.org"
 fi
+
+# -----------------------------------------------------------
+# Directory aliases for Linux
+if [[ "$OSTYPE" == *linux* ]]; then
+  # User directories
+  alias desktop="cd $HOME/Desktop"
+  alias documents="cd $HOME/Documents"
+  alias downloads="cd $HOME/Downloads"
+
+  # System directories
+  alias etc="cd /etc"
+fi
+
+
+# -----------------------------------------------------------
+# Directory aliases for macOS
+if [[ "$OSTYPE" == *darwin* ]]; then
+  # User directories
+  alias desktop="cd $HOME/Desktop"
+  alias documents="cd $HOME/Documents"
+  alias downloads="cd $HOME/Downloads"
+  alias movies="cd $HOME/Movies"
+  alias music="cd $HOME/Music"
+  alias pictures="cd $HOME/Pictures"
+  alias public="cd $HOME/Public"
+
+  # System directories
+  alias etc="cd /private/etc"
+fi
+
 
 
 # -----------------------------------------------------------
@@ -44,6 +76,11 @@ fi
 # Lists folders and files sizes in the current folder
 alias ducks="du -cksh * | sort -rn|head -11"
 
+# Available space from disk partitions listed in a readable way
+alias disk-free-space="df -h"
+
+# Disk space used by the file/directory given as a parameter
+alias disk-usage-summary="du -sh"
 
 # -----------------------------------------------------------
 # If `grep` is available
@@ -552,3 +589,16 @@ if [[ "$OSTYPE" == *darwin* ]]; then
   alias macos-file-attributes="xattr -l"
 fi
 
+
+# -----------------------------------------------------------
+# Network configuration metadata
+#
+# - https://github.com/drduh/macOS-Security-and-Privacy-Guide#wi-fi
+# -----------------------------------------------------------
+if [[ "$OSTYPE" == *darwin* ]]; then
+  alias macos-wifi-configuration="defaults read /Library/Preferences/SystemConfiguration/com.apple.airport.preferences.plist"
+  alias macos-wifi-configuration-backup="macos-wifi-configuration > ~/Desktop/macos-wifi-configuration-backup-$(date +%F-%H%M).txt"
+  alias macos-wifi-grep-SSIDString="macos-wifi-configuration | grep SSIDString | tr -d \"[:blank:]\" | sort | uniq"
+  alias macos-wifi-network-names="macos-wifi-grep-SSIDString"
+  alias macos-wifi-grep-ssid="macos-wifi-configuration | grep wifi.ssid | tr -d \"[:blank:]\" | sort | uniq"
+fi
