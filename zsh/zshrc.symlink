@@ -30,17 +30,19 @@ export PLATFORM
 
 # -----------------------------------------------------------
 # Check what Linux distribution you are using
-CHECK_DISTRIBUTION=`cat /etc/*release | grep -w 'NAME='`
+if [[ "$OSTYPE" == *linux* ]]; then
+  CHECK_DISTRIBUTION=`cat /etc/*release | grep -w 'NAME='`
 
-# Compare command output to check if it includes text string
-if [[ "$CHECK_DISTRIBUTION" == *Debian* ]]; then
-  DISTRIBUTION="Debian"
-elif [[ "$CHECK_DISTRIBUTION" == *openSUSE* ]]; then
-  DISTRIBUTION="openSUSE"
+  # Compare command output to check if it includes text string
+  if [[ "$CHECK_DISTRIBUTION" == *Debian* ]]; then
+    DISTRIBUTION="Debian"
+  elif [[ "$CHECK_DISTRIBUTION" == *openSUSE* ]]; then
+    DISTRIBUTION="openSUSE"
+  fi
+
+  # Export system-specific value based on the operating system
+  export DISTRIBUTION
 fi
-
-# Export system-specific value based on the operating system
-export DISTRIBUTION
 
 
 # -----------------------------------------------------------
