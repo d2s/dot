@@ -142,7 +142,7 @@ fi
 
 # If rbenv directory is missing
 if [ ! -d "$HOME/.rbenv" ]; then
-  alias install-rbenv="git clone https://github.com/rbenv/rbenv.git ~/.rbenv && "
+  alias install-rbenv="git clone https://github.com/rbenv/rbenv.git ~/.rbenv"
 fi
 
 # If rbenv binaries directory exists
