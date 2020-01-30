@@ -544,6 +544,11 @@ if type -p docker &>/dev/null; then
 fi
 
 
-
-
+# -----------------------------------------------------------
+# File metadata discovery for macOS systems
+# -----------------------------------------------------------
+if [[ "$OSTYPE" == *darwin* ]]; then
+  alias macos-file-metadata="mdls"
+  alias macos-file-attributes="xattr -l"
+fi
 
