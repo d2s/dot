@@ -242,6 +242,7 @@ if type -p git &>/dev/null; then
   # alias gfa="git fetch --all --p"
   # alias gkdm="git kit del--merged"
   alias gl="git log --oneline --color --decorate --graph"
+  alias lg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
   alias gp="git pull --ff-only --all -p"
   alias git-pull-changes-from-upstream="git fetch upstream && git checkout master && git merge upstream/master"
   # alias gpa="git push --u d2s HEAD"
