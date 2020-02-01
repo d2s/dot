@@ -1,6 +1,6 @@
 # dot
 
-. files for macOS & Linux environments
+. files for Linux & macOS environments
 
 
 ## Setup
