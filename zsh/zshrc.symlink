@@ -46,6 +46,21 @@ fi
 
 
 # -----------------------------------------------------------
+# Private configs
+#
+# Use `.localrc` for system-specific configs
+# that you don't want in your public, versioned repo.
+#
+# Another use case is to override variables on a per-system basis:
+#   DISABLE_NVM=false
+# -----------------------------------------------------------
+# shellcheck disable=SC1090
+[ -f ~/.localrc ] && . ~/.localrc
+
+
+
+
+# -----------------------------------------------------------
 # Define reusable values
 # -----------------------------------------------------------
 
@@ -324,10 +339,3 @@ fi
 # More details: https://make.wordpress.org/cli/handbook/installing/
 #source "$ZSH/zsh/autocomplete/wp-completion.bash"
 
-
-# -----------------------------------------------------------
-# Private configs
-# use .localrc for SUPER SECRET CRAP that you don't
-# want in your public, versioned repo.
-# shellcheck disable=SC1090
-[ -f ~/.localrc ] && . ~/.localrc
