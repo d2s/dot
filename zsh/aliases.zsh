@@ -236,6 +236,7 @@ if type -p git &>/dev/null; then
   alias git-branch-full="git branch -v"
   alias gcan="git commit --amend"
   alias git-commit-amend="git commit --amend"
+  alias git-diff="git diff"
   # alias gcm="git commit -m"
   alias gco="git checkout"
   # alias gcop="git checkout --p"
@@ -567,9 +568,6 @@ fi
 # -----------------------------------------------------------
 # If `docker` is available
 if type -p docker &>/dev/null; then
-  # look at protocol addresses
-  # alias list-network-address="ip address show"
-
   # youtube-dl
   # - https://github.com/vimagick/dockerfiles/tree/master/youtube/youtube-dl
   #
@@ -579,7 +577,11 @@ if type -p docker &>/dev/null; then
   # - Download item:
   #   yt VIDEOID
   alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data vimagick/youtube-dl'
+
+  # Refresh Docker container to the latest version
+  alias update-docker-yt='docker pull vimagick/youtube-dl'
 fi
+
 
 
 # -----------------------------------------------------------
