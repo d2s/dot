@@ -10,6 +10,9 @@ count() {
   printf '%s\n' "$#"
 }
 
+# Count sub-directories directly under the `node_modules`
+alias count_node_modules="count ./node_modules/*"
+
 
 # -----------------------------------------------------------
 # Check if string contains a sub-string
@@ -25,7 +28,6 @@ get_functions() {
   IFS=$'\n' read -d "" -ra functions < <(declare -F)
   printf '%s\n' "${functions[@]//declare -f }"
 }
-
 
 
 # -----------------------------------------------------------
