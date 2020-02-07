@@ -62,6 +62,16 @@ if [[ "$OSTYPE" == *darwin* ]]; then
 fi
 
 
+# -----------------------------------------------------------
+# Local system-specific config file for Zsh
+#   NOTE: Outside of the Git repository!
+# -----------------------------------------------------------
+LOCALRC_CONFIG_FILE="$HOME/.localrc.sh"
+
+if [[ -f "$LOCALRC_CONFIG_FILE" ]]; then
+  alias edit_localrc_config="code $LOCALRC_CONFIG_FILE"
+fi
+
 
 # -----------------------------------------------------------
 # Location related aliases
@@ -72,6 +82,7 @@ if [ "$SYSTEMTYPE" = "linux" ] ; then
 elif [ "$OS" = "darwin" ] ; then
   alias pwdcopy="pwd | pbcopy"
 fi
+
 
 # -----------------------------------------------------------
 # Lists folders and files sizes in the current folder
