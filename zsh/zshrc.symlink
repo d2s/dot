@@ -170,16 +170,22 @@ fi
 #done
 
 # -----------------------------------------------------------
-# Load custom ZSH configs
+# Load partial Zsh configs from other files
+
+# Zsh aliases
 if [ -f "$ZSH/zsh/aliases.zsh" ]; then
   source "$ZSH/zsh/aliases.zsh"
 fi
 
-
+# Zsh helper functions
 if [ -f "$ZSH/zsh/helper-functions.zsh" ]; then
   source "$ZSH/zsh/helper-functions.zsh"
 fi
 
+# D programming language configs
+if [ -f "$ZSH/zsh/dlang.zsh" ]; then
+  source "$ZSH/zsh/dlang.zsh"
+fi
 
 
 # -----------------------------------------------------------
