@@ -10,7 +10,7 @@ LOCAL_DLANG_PATH="$HOME/dlang"
 
 # If directory is missing, offer alias for installing it
 if [ ! -d "$LOCAL_DLANG_PATH" ]; then
-  alias dlang-download-installer="$mkdir -p $LOCAL_DLANG_PATH && wget https://dlang.org/install.sh -O $LOCAL_DLANG_PATH/install.sh && chmod u+x $LOCAL_DLANG_PATH/install.sh"
+  alias dlang-download-installer="mkdir -p $LOCAL_DLANG_PATH && wget https://dlang.org/install.sh -O $LOCAL_DLANG_PATH/install.sh && chmod u+x $LOCAL_DLANG_PATH/install.sh"
 fi
 
 # Installer tool
