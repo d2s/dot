@@ -119,6 +119,18 @@ if [ -x "$(command -v apt)" ]; then
   #       dpkg-reconfigure apt-listchanges
   if_not_already_installed "apt-listchanges"
 
+  # GCC, the GNU Compiler Collection
+  # - https://gcc.gnu.org/
+  if_not_already_installed "gcc"
+
+  # The Fast Lexical Analyzer - scanner generator for lexing in C and C++
+  # - https://github.com/westes/flex
+  if_not_already_installed "flex"
+
+  # GDB: The GNU Project Debugger
+  # - https://www.gnu.org/software/gdb/
+  if_not_already_installed "gdb"
+
 else
   # Exit with error code when apt is not available
   echo "NOTE: apt is not available! Nothing happened."
