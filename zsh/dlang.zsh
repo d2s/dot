@@ -4,6 +4,12 @@
 # D language install tool
 # - https://dlang.org/dmd-linux.html
 # - https://dlang.org/install.html
+#
+# Steps to install:
+# - Run command:  dlang-download-installer
+# - Open new terminal
+# - Run command:  dlang-install
+# - Open new terminal
 # -----------------------------------------------------------
 # Set variable for the D language location
 LOCAL_DLANG_PATH="$HOME/dlang"
