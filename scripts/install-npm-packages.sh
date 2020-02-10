@@ -84,6 +84,13 @@ if [ -x "$(command -v npm)" ]; then
   # - https://github.com/Rich-Harris/degit
   if_not_already_installed "degit"
 
+  # alex
+  # "catch insensitive, inconsiderate writing"
+  # - https://alexjs.com/
+  # - https://www.npmjs.com/package/alex
+  # - https://github.com/get-alex/alex
+  if_not_already_installed "alex"
+
   # serve directory via HTTP
   # - https://www.npmjs.com/package/serve
   # - https://github.com/zeit/serve
