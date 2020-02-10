@@ -69,33 +69,42 @@ if_cli_command_does_not_exist() {
 # -----------------------------------------------------------
 # If npm command is available
 if [ -x "$(command -v npm)" ]; then
-
+  # human readable diffs
+  # - https://www.npmjs.com/package/diff-so-fancy
+  # - https://github.com/so-fancy/diff-so-fancy
   if_not_already_installed "diff-so-fancy"
 
   # open-cli helper tool
+  # - https://www.npmjs.com/package/open-cli
   # - https://github.com/sindresorhus/open-cli
   if_not_already_installed "open-cli"
 
   # serve directory via HTTP
   # - https://www.npmjs.com/package/serve
+  # - https://github.com/zeit/serve
   if_not_already_installed "serve"
 
   # ZEIT Now
   # "a cloud platform for static sites and serverless functions"
-  # - https://zeit.co/docs/v2/introduction/
+  # - https://zeit.co/docs?path=docs
+  # - https://www.npmjs.com/package/now
+  # - https://github.com/zeit/now
   if_not_already_installed "now"
 
   # -----------------------------------------------------------
-  # Netlify:
+  # Netlify CLI:
   # "continuous deployment, serverless functions, web hosting"
   # - https://www.netlify.com/
   # - https://www.netlify.com/docs/cli/
+  # - https://www.npmjs.com/package/netlify-cli
+  # - https://github.com/netlify/cli
   if_cli_command_does_not_exist "netlify" "netlify-cli" "NOTE: Remember to run 'netlify login' to finish the installation."
 
   # -----------------------------------------------------------
   # Preact CLI
   # - https://preactjs.com/guide/v10/getting-started
   # - https://www.npmjs.com/package/preact-cli
+  # - https://github.com/preactjs/preact-cli
   if_cli_command_does_not_exist "preact" "preact-cli" ""
 
   # -----------------------------------------------------------
