@@ -79,6 +79,11 @@ if [ -x "$(command -v npm)" ]; then
   # - https://github.com/sindresorhus/open-cli
   if_not_already_installed "open-cli"
 
+  # degit
+  # - https://www.npmjs.com/package/degit
+  # - https://github.com/Rich-Harris/degit
+  if_not_already_installed "degit"
+
   # serve directory via HTTP
   # - https://www.npmjs.com/package/serve
   # - https://github.com/zeit/serve
