@@ -91,6 +91,13 @@ if [ -x "$(command -v npm)" ]; then
   # - https://github.com/get-alex/alex
   if_not_already_installed "alex"
 
+  # cspell
+  # - https://www.npmjs.com/package/cspell
+  # - https://www.npmjs.com/package/cspell-tools
+  # - https://github.com/streetsidesoftware/cspell
+  if_not_already_installed "cspell"
+  if_not_already_installed "cspell-tools"
+
   # serve directory via HTTP
   # - https://www.npmjs.com/package/serve
   # - https://github.com/zeit/serve
