@@ -4,8 +4,8 @@
 # VARIABLES
 # -----------------------------------------------------------
 # Debug mode (true / false)
-DEBUG=true
-# DEBUG=false
+# DEBUG=true
+DEBUG=false
 
 # -----------------------------------------------------------
 # Disable: Node Version Manager (true / false)
@@ -56,8 +56,6 @@ fi
 # -----------------------------------------------------------
 # shellcheck disable=SC1090
 [ -f ~/.localrc.sh ] && . ~/.localrc.sh
-
-
 
 
 # -----------------------------------------------------------
@@ -135,25 +133,9 @@ zplugin light sindresorhus/pure
 
 
 # -----------------------------------------------------------
-# Homebrew
-
-DIRECTORY_LINUXBREW="/home/linuxbrew/.linuxbrew"
-DIRECTORY_LINUXBREW_BIN="$DIRECTORY_LINUXBREW/bin"
-
-if [ -d "$DIRECTORY_LINUXBREW_BIN" ]; then
-  # eval \$($(brew --prefix)/bin/brew shellenv)
-  # eval \$(($DIRECTORY_LINUXBREW_BIN)/brew shellenv)
-  #export PATH="$PATH:$DIRECTORY_LINUXBREW_BIN"
-  export PATH="$DIRECTORY_LINUXBREW_BIN:$PATH"
-fi
-
-
-# - https://github.com/drduh/macOS-Security-and-Privacy-Guide#homebrew
-# Check if `brew` is available in the user's PATH
-if type -p brew &>/dev/null; then
-  export HOMEBREW_NO_ANALYTICS=1
-  export HOMEBREW_NO_INSECURE_REDIRECT=1
-  export HOMEBREW_CASK_OPTS=--require-sha
+# Homebrew/Linuxbrew package management configuration
+if [ -f "$ZSH/zsh/brew.zsh" ]; then
+  source "$ZSH/zsh/brew.zsh"
 fi
 
 
@@ -172,6 +154,11 @@ fi
 # -----------------------------------------------------------
 # Load partial Zsh configs from other files
 
+# Aliases of directories for faster navigation
+if [ -f "$ZSH/zsh/directories.zsh" ]; then
+  source "$ZSH/zsh/directories.zsh"
+fi
+
 # Zsh aliases
 if [ -f "$ZSH/zsh/aliases.zsh" ]; then
   source "$ZSH/zsh/aliases.zsh"
@@ -182,22 +169,79 @@ if [ -f "$ZSH/zsh/helper-functions.zsh" ]; then
   source "$ZSH/zsh/helper-functions.zsh"
 fi
 
+# -----------------------------------------------------------
+# File management aliases
+if [ -f "$ZSH/zsh/file-management.zsh" ]; then
+  source "$ZSH/zsh/file-management.zsh"
+fi
+
+# -----------------------------------------------------------
+# Linux package management configs
+# if [ "$OS" = "linux" ] ; then
+if [[ "$OSTYPE" == *linux* ]]; then
+  if [ -f "$ZSH/zsh/linux-package-management.zsh" ]; then
+    source "$ZSH/zsh/linux-package-management.zsh"
+  fi
+fi
+
+# -----------------------------------------------------------
+# Search tools aliases
+if [ -f "$ZSH/zsh/search.zsh" ]; then
+  source "$ZSH/zsh/search.zsh"
+fi
+
+# -----------------------------------------------------------
+# Key management configs
+if [ -f "$ZSH/zsh/key-management.zsh" ]; then
+  source "$ZSH/zsh/key-management.zsh"
+fi
+
+# -----------------------------------------------------------
+# Git aliases
+if [ -f "$ZSH/zsh/git.zsh" ]; then
+  source "$ZSH/zsh/git.zsh"
+fi
+
+# -----------------------------------------------------------
+# Clipboard aliases
+if [ -f "$ZSH/zsh/clipboard.zsh" ]; then
+  source "$ZSH/zsh/clipboard.zsh"
+fi
+
+# -----------------------------------------------------------
+# Process management aliases
+if [ -f "$ZSH/zsh/process-management.zsh" ]; then
+  source "$ZSH/zsh/process-management.zsh"
+fi
+
+# -----------------------------------------------------------
+# Node.js package management (npm, yarn)
+if [ -f "$ZSH/zsh/node-package-management.zsh" ]; then
+  source "$ZSH/zsh/node-package-management.zsh"
+fi
+
+# -----------------------------------------------------------
 # D programming language configs
 if [ -f "$ZSH/zsh/dlang.zsh" ]; then
   source "$ZSH/zsh/dlang.zsh"
 fi
 
+# -----------------------------------------------------------
+# PHP related configs
+if [ -f "$ZSH/zsh/php.zsh" ]; then
+  source "$ZSH/zsh/php.zsh"
+fi
 
 # -----------------------------------------------------------
-# Adjust paths to software tools
-# -----------------------------------------------------------
+# Networking tools aliases
+if [ -f "$ZSH/zsh/networking.zsh" ]; then
+  source "$ZSH/zsh/networking.zsh"
+fi
 
-# if [ "$OS" = "linux" ] ; then
-if [[ "$OSTYPE" == *linux* ]]; then
-  # Add custom binaries from Snapcraft https://snapcraft.io/ to PATH
-  if [ -d "/snap/bin" ]; then
-    export PATH="$PATH:/snap/bin"
-  fi
+# -----------------------------------------------------------
+# Docker related aliases
+if [ -f "$ZSH/zsh/docker.zsh" ]; then
+  source "$ZSH/zsh/docker.zsh"
 fi
 
 
@@ -209,124 +253,46 @@ fi
 
 
 # -----------------------------------------------------------
+# System-wide local packages
+# -----------------------------------------------------------
 if [ -d "/usr/local/bin" ]; then
   export PATH="/usr/local/bin:$PATH"
 fi
 
-# -----------------------------------------------------------
-# Rust installer & package manager
-if [ -d "$HOME/.cargo/bin" ]; then
-  export PATH="$HOME/.cargo/bin:$PATH"
-fi
-
-# -----------------------------------------------------------
-# Ruby installer
-# - Install instructions: https://github.com/rbenv/rbenv#basic-github-checkout
-if [ -d "$HOME/.rbenv/bin" ]; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
-fi
-
-# -----------------------------------------------------------
-# For macOS systems
-if [ "$OS" = "darwin" ] ; then
-  # Load ZSH aliases for macOS related tools
-  if [ -f "$ZSH/macos/crashlogs.zsh" ]; then
-    source "$ZSH/macos/crashlogs.zsh"
-  fi
-
-  # PHP from Homebrew package manager
-  if [ -d /usr/local/opt/php@7.1/bin ]; then
-    export PATH="/usr/local/opt/php@7.1/bin:$PATH"
-  fi
-
-  if [ -d /usr/local/opt/php@7.1/sbin ]; then
-    export PATH="/usr/local/opt/php@7.1/sbin:$PATH"
-  fi
-
-  # Python 3.6
-  # - Add binaries installed with pip3 to the PATH
-  if [ -d "$HOME/Library/Python/3.6/bin" ]; then
-    export PATH="$HOME/Library/Python/3.6/bin:$PATH"
-  fi
-
-  # iTerm2 shell integration
-  if [ -f "${HOME}/.iterm2_shell_integration.zsh" ]; then
-    source "${HOME}/.iterm2_shell_integration.zsh"
-  fi
-fi
-
-
-# -----------------------------------------------------------
-# PHP Composer and other tools located under bin directory
-if [ -d "$HOME/bin" ]; then
-  export PATH="$HOME/bin:$PATH"
-fi
-
-# PHP Composer global packages
-if [ -d "$HOME/.composer/vendor/bin" ]; then
-  export PATH="$HOME/.composer/vendor/bin:$PATH"
-fi
-
-
-# -----------------------------------------------------------
 if [ -d "/usr/local/sbin" ]; then
   export PATH="/usr/local/sbin:$PATH"
 fi
 
 
 # -----------------------------------------------------------
-# hub
-# -----------------------------------------------------------
-# Check if `hub` is available in the user's PATH
-if type -p hub &>/dev/null; then
-  # Wrap git automatically
-  eval "$(hub alias -s)"
+# Rust related configs
+if [ -f "$ZSH/zsh/rust.zsh" ]; then
+  source "$ZSH/zsh/rust.zsh"
 fi
 
 
 # -----------------------------------------------------------
-# GPG
-# -----------------------------------------------------------
-# Check if `gpg` is available in the user's PATH
-if type -p gpg &>/dev/null; then
-  # - https://help.github.com/en/articles/telling-git-about-your-signing-key
-  export GPG_TTY=$TTY
+# Ruby related configs
+if [ -f "$ZSH/zsh/ruby.zsh" ]; then
+  source "$ZSH/zsh/ruby.zsh"
 fi
 
 
 # -----------------------------------------------------------
-# nvm (Node Version Manager)
-# - https://github.com/creationix/nvm
-#
-# TODO: look at https://github.com/nodenv/nodenv/wiki/Alternatives
-#
-# Note that loading nvm makes starting new shell much slower!
-
-if [ $DISABLE_NVM = "false" ] ; then
-  if [ -d "$HOME/.nvm" ]; then
-    # export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-    export NVM_DIR="$HOME/.nvm"
-
-    # This loads nvm
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-    # This loads nvm bash_completion
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+# For macOS systems
+if [ "$OS" = "darwin" ] ; then
+  # macOS related configs
+  if [ -f "$ZSH/zsh/macos/macos.zsh" ]; then
+    source "$ZSH/zsh/macos/macos.zsh"
   fi
 fi
 
 
 # -----------------------------------------------------------
-# Yarn
-# -----------------------------------------------------------
-# Check if `yarn` is available in the user's PATH
-if type -p yarn &>/dev/null; then
-  # Add the install location of global binaries to your PATH
-  # More details: https://yarnpkg.com/en/docs/cli/global
-  export PATH="$(yarn global bin):$PATH"
+# Tools located under home directory
+if [ -d "$HOME/bin" ]; then
+  export PATH="$HOME/bin:$PATH"
 fi
-
 
 
 # -----------------------------------------------------------
@@ -337,11 +303,4 @@ if [ "$SYSTEMTYPE" = "linux" ] ; then
     alias open="open-cli"
   fi
 fi
-
-
-
-# -----------------------------------------------------------
-# WordPress CLI autocomplete
-# More details: https://make.wordpress.org/cli/handbook/installing/
-#source "$ZSH/zsh/autocomplete/wp-completion.bash"
 
