@@ -249,6 +249,7 @@ if type -p git &>/dev/null; then
   alias git-branch-full="git branch -v"
   # List branch details (including remote branches)
   alias git-branch-full-remote="git branch -va"
+  alias git-branch-rename-current-to="git branch -m"
 
   # Amend previous commit
   alias gcan="git commit --amend"
