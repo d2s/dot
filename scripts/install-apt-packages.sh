@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
-###############################################################################
+#############################################################
 # install-apt-packages.sh
 # This script installs tools from Debian packages if possible
-###############################################################################
+#############################################################
 
 # -----------------------------------------------------------
 # Unoffical Bash "strict mode"
 # http://redsymbol.net/articles/unofficial-bash-strict-mode/
+# -----------------------------------------------------------
 set -euo pipefail
 IFS=$'\t\n' # Stricter IFS settings
 # shellcheck disable=SC2034  # Unused variable needed for the Bash strict mode
@@ -14,12 +15,14 @@ ORIGINAL_IFS=$IFS
 
 # -----------------------------------------------------------
 # Go to user account's home directory
+# -----------------------------------------------------------
 cd "$HOME"
 
 # -----------------------------------------------------------
 # Update apt package lists
 # Usage:
 #   apt_update
+# -----------------------------------------------------------
 apt_update() {
   printf "\\n"
   printf "Updating apt package lists:"
@@ -32,6 +35,7 @@ apt_update() {
 # Install package defined in a string variable
 # Usage:
 #   install_apt_package "package"
+# -----------------------------------------------------------
 install_apt_package() {
   printf "\\n"
   printf "sudo apt-get install %s\\n" "$1"
@@ -43,6 +47,7 @@ install_apt_package() {
 # Tell user that package has already been installed
 # Usage:
 #   apt_package_already_installed "package"
+# -----------------------------------------------------------
 apt_package_already_installed() {
   printf "NOTE: package already installed: %s\\n" "$1"
   printf "\\n"
@@ -52,6 +57,7 @@ apt_package_already_installed() {
 # If package is not already installed, install it
 # Usage:
 #   if_not_already_installed "package"
+# -----------------------------------------------------------
 if_not_already_installed() {
   if [[ ! "$(dpkg -s "$1" | grep Status)" == "Status: install ok installed" ]]; then
     install_apt_package "$1"
@@ -62,6 +68,7 @@ if_not_already_installed() {
 
 # -----------------------------------------------------------
 # If `apt` command is available
+# -----------------------------------------------------------
 if [ -x "$(command -v apt)" ]; then
   # Update apt package lists
   apt_update
