@@ -23,15 +23,25 @@ if type -p git &>/dev/null; then
   alias git-branch-full-remote="git branch -va"
   alias git-branch-rename-current-to="git branch -m"
 
+  alias git-commit="git commit"
   # Amend previous commit
   alias gcan="git commit --amend"
   alias git-commit-amend="git commit --amend"
   # alias gcm="git commit -m"
   # alias fixup="git commit --fixup"
 
+  # Check when the last changes were made
+  # Usage:
+  #     git-inspect FILENAME
+  alias git-inspect="git blame"
+
+  # List contributors with number of commits
+  alias git-contributors="git shortlog --summary --numbered"
+
   alias git-clone="git clone"
   alias git-diff="git diff"
 
+  alias git-checkout="git checkout"
   alias gco="git checkout"
   # alias gcop="git checkout --p"
 
@@ -63,9 +73,13 @@ if type -p git &>/dev/null; then
   alias git-remote-set-url-origin="git remote set-url origin"
   alias git-remote-set-url-upstream="git remote set-url upstream"
 
+  alias git-log="git log"
+  alias git-log-diff="git log -p"
+  alias git-tree="git log --graph --decorate --pretty=oneline --abbrev-commit --all"
   alias gl="git log --oneline --color --decorate --graph"
   alias lg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 
+  alias git-status="git status"
   alias gs="git status"
   alias gst="git status"
 fi
