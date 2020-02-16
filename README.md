@@ -20,9 +20,12 @@ git clone https://github.com/d2s/dot.git ~/.dotfiles
 # Install Zplugin
 git clone https://github.com/zdharma/zplugin.git ~/.dotfiles/zsh/zplugin/bin
 
-# Link configuration files
+# Link Zsh configuration files
 ln -sf ~/.dotfiles/zsh/zshrc.symlink ~/.zshrc
-ln -sf ~/.dotfiles/git/gitignore_global ~/.gitignore_global
+
+# Link Git configuration files
+ln -sf ~/.dotfiles/git/gitconfig ~/.gitconfig
+ln -sf ~/.dotfiles/git/gitignore_global ~/.gitignore
 
 # Install related tools...
 # If on a Debian-based Linux system:
@@ -45,6 +48,33 @@ chsh -s $(which zsh)
 # git submodule update
 
 ```
+
+
+## Git configuration
+
+Create a `~/.gitconfig.local` file for the local overrides.
+It allows you to adjust Git configs for system-specific needs
+while keeping the shared settings in the version control.
+
+### Example local Git config file
+
+```txt
+
+[user]
+  name = Firstname Lastname
+  email = user@example.com
+  # signingkey = 0000000000000000
+
+[github]
+  user = your_github_username
+
+```
+
+### Sign Git commits with a GPG key
+
+More details about how to sign Git commits with a GPG key is available from the following article:
+
+- [Signing commits - GitHub Help](https://help.github.com/articles/signing-commits-using-gpg/)
 
 
 ## Dependencies to install manually
