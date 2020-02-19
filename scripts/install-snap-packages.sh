@@ -83,6 +83,38 @@ if [ -x "$(command -v snap)" ]; then
   if_not_already_installed "nuclear"
 
   # -----------------------------------------------------------
+  # Spotify music player (unofficial)
+  # - https://snapcraft.io/spotify
+  # -----------------------------------------------------------
+  # if_not_already_installed "spotify"
+
+  # -----------------------------------------------------------
+  # Insomnia
+  # - https://insomnia.rest
+  # - https://support.insomnia.rest
+  # - https://snapcraft.io/insomnia
+  # -----------------------------------------------------------
+  if_not_already_installed "insomnia"
+
+  # -----------------------------------------------------------
+  # VS Code
+  # - https://code.visualstudio.com/
+  # - https://code.visualstudio.com/docs/supporting/FAQ#_how-to-disable-crash-reporting
+  # - https://code.visualstudio.com/License/
+  # - https://privacy.microsoft.com/en-us/privacystatement
+  # - https://github.com/Microsoft/vscode
+  # - https://twitter.com/code
+  # - https://snapcraft.io/code
+  # -----------------------------------------------------------
+  if_not_already_installed "code"
+
+  # -----------------------------------------------------------
+  # Firefox (web browser)
+  # - https://snapcraft.io/firefox
+  # -----------------------------------------------------------
+  if_not_already_installed "firefox"
+
+  # -----------------------------------------------------------
   # Storybook
   # -----------------------------------------------------------
   # if_cli_command_does_not_exist "sb" "@storybook/cli" ""
