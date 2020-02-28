@@ -134,3 +134,14 @@ if type -p grep &>/dev/null; then
     history | grep "$1"
   }
 fi
+
+# -----------------------------------------------------------
+# Keyword explainer tools
+#
+# Usage:
+#   whatis KEYWORD
+# -----------------------------------------------------------
+# If `wtf` program is available
+if type -p wtf &>/dev/null; then
+  alias whatis="wtf"
+fi
