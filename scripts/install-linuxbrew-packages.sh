@@ -73,7 +73,8 @@ if [ -x "$(command -v brew)" ]; then
   brew_update
 
   if_not_already_installed "hub"
-  if_not_already_installed "youtube-dl"
+  if_not_already_installed "wtf"
+  # if_not_already_installed "youtube-dl"
 
 else
   echo ""
