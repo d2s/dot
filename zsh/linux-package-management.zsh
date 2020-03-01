@@ -46,8 +46,9 @@ fi
 # - https://snapcraft.io/
 # -----------------------------------------------------------
 if [ -d "/snap/bin" ]; then
-  # # Add custom binaries from Snapcraft to the PATH
+  # Add custom binaries from Snapcraft to the PATH
   export PATH="$PATH:/snap/bin"
+  # export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/snapd/desktop"
 
   # Allow using different versions at the same time
   if [ -f "/snap/bin/firefox" ]; then
