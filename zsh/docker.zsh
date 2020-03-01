@@ -4,6 +4,7 @@
 # -----------------------------------------------------------
 # If `docker` is available
 if type -p docker &>/dev/null; then
+  # -----------------------------------------------------------
   # youtube-dl
   # - https://github.com/vimagick/dockerfiles/tree/master/youtube/youtube-dl
   #
@@ -16,6 +17,18 @@ if type -p docker &>/dev/null; then
 
   # Refresh Docker container to the latest version
   alias update-docker-yt='docker pull vimagick/youtube-dl'
+
+  # -----------------------------------------------------------
+  # wtfutil
+  #
+  # Setup script available:
+  # - `../wtfutil/install-wtfutil.sh`
+
+  # Create local variables
+  WTF_CONFIG_FILENAME='config.yml'
+  WTF_CONFIG_PATH="$ZSH/wtfutil/$WTF_CONFIG_FILENAME"
+
+  # Create alises
+  alias wtfutil="docker run -it -v $WTF_CONFIG_PATH:/config/config.yml wtfutil --config=/config/config.yml"
+  alias wtfutil_without_config='docker run -it wtfutil'
 fi
-
-
