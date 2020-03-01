@@ -41,7 +41,7 @@ chsh -s $(which zsh)
 # Install CLI tools from npm
 ~/.dotfiles/scripts/install-npm-packages.sh
 
-# Get the submodules (not be needed anymore)
+# Get the submodule dependencies (not be needed anymore)
 #   NOTE: colors palette
 #
 # git submodule init
@@ -55,6 +55,12 @@ chsh -s $(which zsh)
 Create a `~/.gitconfig.local` file for the local overrides.
 It allows you to adjust Git configs for system-specific needs
 while keeping the shared settings in the version control.
+
+```sh
+touch ~/.gitconfig.local
+code ~/.gitconfig.local
+```
+
 
 ### Example local Git config file
 
@@ -81,6 +87,16 @@ More details about how to sign Git commits with a GPG key is available from the 
 
 - Node.js
   - [Installing Node.js with nvm](https://gist.github.com/d2s/372b5943bce17b964a79)
+- `hub`
+  - [Releases · github/hub · GitHub](https://github.com/github/hub/releases)
+
+
+### Create common directories
+
+```sh
+mkdir ~/bin
+mkdir ~/Documents/git
+```
 
 
 ## More details
