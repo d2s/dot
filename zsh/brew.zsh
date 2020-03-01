@@ -34,4 +34,9 @@ if type -p brew &>/dev/null; then
 
   # Update outdated globally installed npm packages
   alias update-brew-packages="brew update && brew upgrade"
+
+  # Search brew packages
+  # Usage:
+  #   search_brew_packages KEYWORD
+  alias search_brew_packages="brew search"
 fi

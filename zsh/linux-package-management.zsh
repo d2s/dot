@@ -35,6 +35,11 @@ if [[ "$DISTRIBUTION" == "Debian" ]]; then
     # Show Debian package details
     alias details="apt-cache show"
 
+    # Search Debian packages
+    # Usage:
+    #   search_apt_packages KEYWORD
+    alias search_apt_packages="apt-cache search"
+
     # Show changelog for a Debian package
     alias changelog="apt changelog"
   fi
@@ -49,6 +54,11 @@ if [ -d "/snap/bin" ]; then
   # Add custom binaries from Snapcraft to the PATH
   export PATH="$PATH:/snap/bin"
   # export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/snapd/desktop"
+
+  # Search Snapcraft packages
+  # Usage:
+  #   search_snap_packages KEYWORD
+  alias search_snap_packages="snap search"
 
   # Allow using different versions at the same time
   if [ -f "/snap/bin/firefox" ]; then
