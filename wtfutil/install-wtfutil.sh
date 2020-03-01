@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 #############################################################
 # This script installs wtfutil if possible
+#
+# - https://wtfutil.com/
+# - https://github.com/wtfutil/wtf
 #############################################################
 
 # -----------------------------------------------------------
@@ -14,9 +17,9 @@ ORIGINAL_IFS=$IFS
 
 
 # -----------------------------------------------------------
-# If `apt` command is available
+# If `curl` command is available
 # -----------------------------------------------------------
-if [ -x "$(command -v apt)" ]; then
+if [ -x "$(command -v curl)" ]; then
   # download or create the Dockerfile
   curl -o Dockerfile https://raw.githubusercontent.com/wtfutil/wtf/master/Dockerfile
 
