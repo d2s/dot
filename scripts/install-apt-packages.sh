@@ -138,6 +138,10 @@ if [ -x "$(command -v apt)" ]; then
   # - https://www.gnu.org/software/gdb/
   if_not_already_installed "gdb"
 
+  # Uptimed (uprecords)
+  # - https://github.com/rpodgorny/uptimed
+  if_not_already_installed "uptimed"
+
 else
   # Exit with error code when apt is not available
   echo "NOTE: apt is not available! Nothing happened."
