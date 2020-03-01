@@ -78,6 +78,9 @@ code ~/.gitconfig.local
 
 ### Sign Git commits with a GPG key
 
+GPG key is required for creating new Git commits.
+Update the `signingkey` part of `~/.gitconfig.local` file to match your local system.
+
 More details about how to sign Git commits with a GPG key is available from the following article:
 
 - [Signing commits - GitHub Help](https://help.github.com/articles/signing-commits-using-gpg/)
