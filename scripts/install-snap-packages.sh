@@ -121,6 +121,7 @@ if [ -x "$(command -v snap)" ]; then
 
   # -----------------------------------------------------------
 else
-  echo "NOTE: snap is not installed! Nothing happened."
+  echo "ERROR: snap is not installed! Nothing happened."
   echo "Read system setup instructions from: https://snapcraft.io/"
+  exit 1
 fi

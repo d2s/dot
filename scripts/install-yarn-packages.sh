@@ -91,5 +91,6 @@ if [ -x "$(command -v yarn)" ]; then
 
   # -----------------------------------------------------------
 else
-  echo "NOTE: Yarn is not installed! Nothing happened."
+  echo "ERROR: Yarn is not installed! Nothing happened."
+  exit 1
 fi

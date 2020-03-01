@@ -144,6 +144,6 @@ if [ -x "$(command -v apt)" ]; then
 
 else
   # Exit with error code when apt is not available
-  echo "NOTE: apt is not available! Nothing happened."
+  echo "ERROR: apt is not available! Nothing happened."
   exit 1
 fi

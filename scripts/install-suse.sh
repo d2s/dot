@@ -102,6 +102,6 @@ if [ -x "$(command -v zypper)" ]; then
   install_opensuse_package "ack"
 else
   # Exit with error code when zypper is not available
-  echo "NOTE: zypper is not available! Nothing happened."
+  echo "ERROR: zypper is not available! Nothing happened."
   exit 1
 fi

@@ -151,5 +151,6 @@ if [ -x "$(command -v npm)" ]; then
 
   # -----------------------------------------------------------
 else
-  echo "NOTE: npm is not installed! Nothing happened."
+  echo "ERROR: npm is not installed! Nothing happened."
+  exit 1
 fi
