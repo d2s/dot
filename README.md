@@ -2,6 +2,7 @@
 
 . files for Linux & macOS environments
 
+---
 
 ## Setup
 
@@ -17,8 +18,9 @@ git clone https://github.com/d2s/dot.git ~/.dotfiles
 #
 # git clone git@github.com:d2s/dot.git ~/.dotfiles
 
-# Install Zplugin
-git clone https://github.com/zdharma/zplugin.git ~/.dotfiles/zsh/zplugin/bin
+# Install Zinit
+mkdir ~/.dotfiles/zsh/zinit
+git clone https://github.com/zdharma/zinit.git ~/.dotfiles/zsh/zinit/bin
 
 # Link Zsh configuration files
 ln -sf ~/.dotfiles/zsh/zshrc.symlink ~/.zshrc
@@ -49,6 +51,7 @@ chsh -s $(which zsh)
 
 ```
 
+---
 
 ## Git configuration
 
@@ -85,6 +88,7 @@ More details about how to sign Git commits with a GPG key is available from the 
 
 - [Signing commits - GitHub Help](https://help.github.com/articles/signing-commits-using-gpg/)
 
+---
 
 ## Dependencies to install manually
 
@@ -101,13 +105,73 @@ mkdir ~/bin
 mkdir ~/Documents/git
 ```
 
+---
+
+## Migrating from Zplugin to Zinit
+
+If you have a previous installation of Zplugin,
+it should be migrated to use [Zinit](https://github.com/zdharma/zinit).
+
+### Clone the Zinit repository to a subdirectory
+
+```sh
+cd ~/.dotfiles/zsh
+mkdir zinit
+git clone https://github.com/zdharma/zinit.git zinit/bin
+```
+
+### Update `.gitignore` file to avoid committing unneeded files
+
+```conf
+# Zinit ignored directories
+# - https://github.com/zdharma/zinit
+zsh/zinit/plugins
+zsh/zinit/root_completions
+zsh/zinit/snippets/plugins
+```
+
+### Open a new terminal to install updated dependencies
+
+After a moment of waiting time, the Zinit environment should be usable again.
+
+
+### Remove old Zplugin directory
+
+After making sure that there aren't any files you need from it,
+remove the old Zplugin directory.
+
+NOTE: *Be careful with the `rm` remove command!*
+
+```sh
+cd ~/.dotfiles/zsh
+rm -rdf zplugin
+```
+
+### Do the same steps on other machines
+
+Because the Zinit installation is outside of the `dot` Git repository
+you need to repeat the installation steps to migrate other machines to the new config.
+
+You will see error message before running rest of the steps
+if you open a new terminal without first doing the migration.
+
+```sh
+cd ~/.dotfiles/zsh
+mkdir zinit
+git clone https://github.com/zdharma/zinit.git zinit/bin
+cd ~/.dotfiles/zsh
+rm -rdf zplugin
+```
+
+---
+
 
 ## More details
 
 ### Zsh extensions
 
-- [Zplugin](https://github.com/zdharma/zplugin)
-  - "Flexible Zsh plugin manager with clean fpath, reports, completion management, turbo mode, services"
+- [Zinit](https://github.com/zdharma/zinit)
+  - "Flexible Zsh plugin manager with clean fpath, reports, completion management, Turbo, annexes, services, packages."
 
 
 ## Optional packages to consider

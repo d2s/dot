@@ -1,5 +1,4 @@
 *~
-/notes.md
 
 # Ignore cached files
 /cache
@@ -9,11 +8,19 @@
 
 # Temporary notes while making improvements
 /NOTES.md
+/notes.md
 
 # Ignore Zsh related files
+# NOTE: These are outdated after migrating to Zinit
 zsh/zplugin/plugins
 zsh/zplugin/root_completions
 zsh/zplugin/snippets/plugins
+
+# Zinit ignored directories
+# - https://github.com/zdharma/zinit
+zsh/zinit/plugins
+zsh/zinit/root_completions
+zsh/zinit/snippets/plugins
 
 # Ignore unfinished setup script
 scripts/setup.sh

@@ -55,8 +55,8 @@ alias showpath='echo $PATH | tr : "\n"'
 
 update-zsh() {
   printf "\\n Updating zsh plugins \\n"
-  zplugin self-update
-  zplugin update
+  zinit self-update
+  zinit update
 }
 
 

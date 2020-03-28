@@ -105,20 +105,23 @@ if [ $DEBUG = "true" ] ; then
 fi
 
 
-# -----------------------------------------------------------
-# zplugin
-# - https://github.com/zdharma/zplugin#option-2---manual-installation
 
-# initial Zplugin's hash definition, if configuring before loading Zplugin, and then:
+
+# -----------------------------------------------------------
+# zinit
+# - https://github.com/zdharma/zinit
+# - https://github.com/zdharma/zinit#option-2---manual-installation
+
+# initial Zinit's hash definition, if configuring before loading Zinit, and then:
 declare -A ZPLGM
-ZPLGM[BIN_DIR]="$ZSH/zplugin/bin"
-ZPLGM[PLUGINS_DIR]="$ZSH/zsh/zplugin/plugins"
-ZPLGM[COMPLETIONS_DIR]="$ZSH/zsh/zplugin/root_completions"
-ZPLGM[SNIPPETS_DIR]="$ZSH/zsh/zplugin/snippets"
-ZPFX="$ZSH/zsh/zplugin/polaris"
+ZPLGM[BIN_DIR]="$ZSH/zinit/bin"
+ZPLGM[PLUGINS_DIR]="$ZSH/zsh/zinit/plugins"
+ZPLGM[COMPLETIONS_DIR]="$ZSH/zsh/zinit/root_completions"
+ZPLGM[SNIPPETS_DIR]="$ZSH/zsh/zinit/snippets"
+ZPFX="$ZSH/zsh/zinit/polaris"
 
 # Load zplugin itself
-source "$ZSH/zsh/zplugin/bin/zplugin.zsh"
+source "$ZSH/zsh/zinit/bin/zinit.zsh"
 
 # Two regular plugins loaded without tracking.
 zplugin light zsh-users/zsh-autosuggestions
