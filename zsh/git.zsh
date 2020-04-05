@@ -107,6 +107,8 @@ if type -p git &>/dev/null; then
   alias git-tree="git log --graph --decorate --pretty=oneline --abbrev-commit --all"
   alias gl="git log --oneline --color --decorate --graph"
   alias lg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+  alias lg-head="lg | head"
+  # alias lg-less="lg | less"
 
   # -----------------------------------------------------------
   alias git-status="git status"
