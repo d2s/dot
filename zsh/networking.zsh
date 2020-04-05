@@ -6,14 +6,19 @@
 # Shows my public IP address
 
 export IP_ECHO_SERVICE="https://api.ipify.org/"
+export IP_ECHO_SERVICE2="https://ifconfig.me/ip"
 
 if type -p curl &>/dev/null; then
-  alias miip="curl -o- $IP_ECHO_SERVICE"
+  alias my_public_ip="curl -o- $IP_ECHO_SERVICE"
+  alias my_public_ip2="curl -s $IP_ECHO_SERVICE2"
 elif type -p wget &>/dev/null; then
-  alias miip="wget -qO- $IP_ECHO_SERVICE"
+  alias my_public_ip="wget -qO- $IP_ECHO_SERVICE"
+  alias my_public_ip2="wget -qO- $IP_ECHO_SERVICE2"
 else
   if [ "$DEBUG" = "true" ] ; then
-    alias miip='echo "NOTE: miip requires either Curl or Wget to work."'
+    NOT_FOUND="NOTE: my_public_ip requires either Curl or Wget to work."
+    alias my_public_ip="echo $NOT_FOUND"
+    alias my_public_ip2="echo $NOT_FOUND"
   fi
 fi
 
