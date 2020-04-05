@@ -111,7 +111,7 @@ fi
 # zinit
 # - https://github.com/zdharma/zinit
 # - https://github.com/zdharma/zinit#option-2---manual-installation
-
+# -----------------------------------------------------------
 # initial Zinit's hash definition, if configuring before loading Zinit, and then:
 declare -A ZPLGM
 ZPLGM[BIN_DIR]="$ZSH/zinit/bin"
@@ -133,6 +133,15 @@ zplugin light zdharma/fast-syntax-highlighting
 # Load the pure theme, with zsh-async library that's bundled with it.
 zplugin ice pick"async.zsh" src"pure.zsh"
 zplugin light sindresorhus/pure
+
+
+# -----------------------------------------------------------
+# Completion Management
+# - https://zdharma.org/zinit/wiki/INTRODUCTION/#completion_management
+# - https://github.com/zsh-users/zsh-completions
+# -----------------------------------------------------------
+zinit ice blockf
+zinit light zsh-users/zsh-completions
 
 
 # -----------------------------------------------------------
