@@ -21,6 +21,7 @@ zsh/zplugin/snippets/plugins
 zsh/zinit/plugins
 zsh/zinit/root_completions
 zsh/zinit/snippets/plugins
+zsh/zinit/snippets
 
 # Ignore unfinished setup script
 scripts/setup.sh
