@@ -73,3 +73,18 @@ else
   fi
 fi
 
+
+# -----------------------------------------------------------
+# Serve the current directory on http://localhost:8000/
+# -----------------------------------------------------------
+if type -p python &>/dev/null; then
+  alias webserver="python3 -m http.server"
+elif type -p python3 &>/dev/null; then
+  alias webserver="python3 -m http.server"
+elif type -p python2 &>/dev/null; then
+  alias webserver="python2 -m SimpleHTTPServer"
+else
+  if [ "$DEBUG" = "true" ] ; then
+    alias webserver='echo "NOTE: webserver requires application: python"'
+  fi
+fi
