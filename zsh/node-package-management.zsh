@@ -21,6 +21,13 @@ fi
 
 
 # -----------------------------------------------------------
+# Disable npm package usage tracking
+# - https://www.npmjs.com/package/@scarf/scarf
+# -----------------------------------------------------------
+export SCARF_ANALYTICS=false
+
+
+# -----------------------------------------------------------
 # Yarn
 # -----------------------------------------------------------
 # Check if `yarn` is available in the user's PATH
