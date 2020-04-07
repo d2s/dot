@@ -1,6 +1,29 @@
 # file-management.zsh
 
 # -----------------------------------------------------------
+# Lists folders and files sizes in the current folder
+alias ducks="du -cksh * | sort -rn|head -11"
+
+# Available space from disk partitions listed in a readable way
+alias disk-free-space="df -h"
+
+# Disk space used by the file/directory given as a parameter
+alias disk-usage-summary="du -sh"
+
+
+# -----------------------------------------------------------
+# Avoid making mistakes
+alias rm="rm -i"
+alias cp="cp -i"
+alias mv="mv -i"
+
+
+# -----------------------------------------------------------
+# Show amount of memory usage in megabytes
+alias free="free -m"
+
+
+# -----------------------------------------------------------
 # List directory contents faster
 # (for extra details, look at `man ls` documentation)
 alias l="ls"
