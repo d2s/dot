@@ -33,6 +33,11 @@ if type -p git &>/dev/null; then
   # alias gcm="git commit -m"
   # alias fixup="git commit --fixup"
 
+  # `--allow-empty` is an useful tool for annotating non-code changes to a project
+  # - https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---allow-empty
+  # - https://github.com/tiimgreen/github-cheat-sheet#empty-commits
+  alias git-commit-allow-empty="git commit --allow-empty"
+
   # -----------------------------------------------------------
   # Check when the last changes were made
   # Usage:
@@ -63,6 +68,7 @@ if type -p git &>/dev/null; then
   alias git-clone="git clone"
 
   alias git-checkout="git checkout"
+  alias git-checkout-previous-branch="git checkout -"
   alias gco="git checkout"
   # alias gcop="git checkout --p"
 
@@ -116,10 +122,27 @@ if type -p git &>/dev/null; then
   alias git-log-simplify-decorate-full="git log --color=always --decorate=full --simplify-by-decoration"
   alias git-log-simplify="git log --color=always --simplify-by-decoration --decorate"
 
+
+  # -----------------------------------------------------------
+  # Git show latest
+  #
+  # Search all your previous commit messages
+  # and find the most recent one matching the query.
+  #
+  # - https://github.com/tiimgreen/github-cheat-sheet#git-query
+  #
+  # Usage:
+  #   git-show-latest PATTERN
+  # -----------------------------------------------------------
+  git-show-latest() {
+    git show :/"$1"
+  }
+
   # -----------------------------------------------------------
   alias git-status="git status"
-  alias gs="git status"
-  alias gst="git status"
+  alias git-status-short-with-branches="git status -sb"
+  alias gs="git-status-short-with-branches"
+  alias gst="git-status-short-with-branches"
 
   # -----------------------------------------------------------
 fi
