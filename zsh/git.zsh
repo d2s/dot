@@ -110,14 +110,19 @@ if type -p git &>/dev/null; then
   # -----------------------------------------------------------
   alias git-log="git log"
   alias git-log-diff="git log -p"
-  alias git-tree="git log --graph --decorate --pretty=oneline --abbrev-commit --all"
-  alias git-log-branches="git log --color=always --oneline --decorate --graph --branches"
-  alias git-log-branches-in-tag="echo You can append a tag name; LANG=C sleep 0.5; git-log-branches"
-  alias gl="git-log-branches"
 
-  alias lg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
-  alias lg-head="lg | head"
-  # alias lg-less="lg | less"
+  alias git-tree="git log --decorate --pretty=oneline --abbrev-commit --all --graph"
+
+  alias git-log-branches="git log --color=always --oneline --decorate --graph --branches"
+  alias gl="git-log-branches"
+  alias gl-head="git-log-branches | head"
+
+  alias git-log-branches-long="git log --color=always --abbrev-commit --date=relative --graph --oneline --branches"
+  alias lg="git-log-branches-long"
+  alias lg-head="git-log-branches-long | head"
+  # alias lg-less="git-log-branches-long | less"
+
+  alias git-log-branches-in-tag="echo You can append a tag name; LANG=C sleep 0.5; git-log-branches"
 
   alias git-log-simplify-decorate-full="git log --color=always --decorate=full --simplify-by-decoration"
   alias git-log-simplify="git log --color=always --simplify-by-decoration --decorate"
