@@ -109,18 +109,25 @@ if type -p git &>/dev/null; then
 
   # -----------------------------------------------------------
   alias git-log="git log"
-  alias git-log-diff="git log -p"
+  alias git-log-bat="git-log | bat"
 
-  alias git-tree="git log --decorate --pretty=oneline --abbrev-commit --all --graph"
+  alias git-log-diff="git-log -p"
+  alias git-log-diff-bat="git-log-diff | bat"
+
+  alias git-tree="git log --color=always --decorate --pretty=oneline --abbrev-commit --all --graph"
 
   alias git-log-branches="git log --color=always --oneline --decorate --graph --branches"
+  alias git-log-branches-long="git log --color=always --oneline --decorate --abbrev-commit --date=relative --graph --branches"
+
   alias gl="git-log-branches"
   alias gl-head="git-log-branches | head"
+  alias gl-bat="git-log-branches | bat"
 
-  alias git-log-branches-long="git log --color=always --abbrev-commit --date=relative --graph --oneline --branches"
   alias lg="git-log-branches-long"
   alias lg-head="git-log-branches-long | head"
-  # alias lg-less="git-log-branches-long | less"
+  alias lg-bat="git-log-branches-long | bat"
+  alias large-bat="lg-bat"
+  alias batman="large-bat"
 
   alias git-log-branches-in-tag="echo You can append a tag name; LANG=C sleep 0.5; git-log-branches"
 
