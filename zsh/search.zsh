@@ -145,3 +145,23 @@ fi
 if type -p wtf &>/dev/null; then
   alias whatis="wtf"
 fi
+
+
+
+# -----------------------------------------------------------
+# Show files changed in 15 minutes
+#
+# Usage:
+#   changed-in-15-minutes
+# -----------------------------------------------------------
+alias files-changed-in-15-minutes="find . -newerct '15 minute ago' -print"
+
+# -----------------------------------------------------------
+# Show files changed in X minutes
+#
+# Usage:
+#   files-changed-in-x-minutes 5
+# -----------------------------------------------------------
+files-changed-in-x-minutes() {
+  find . -newerct "$1 minute ago" -print
+}
