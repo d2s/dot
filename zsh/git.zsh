@@ -124,7 +124,10 @@ if type -p git &>/dev/null; then
   alias gl-bat="git-log-branches | bat"
 
   alias lg="git-log-branches-long"
+
   alias lg-head="git-log-branches-long | head"
+  alias large-head="lg-head"
+
   alias lg-bat="git-log-branches-long | bat"
   alias large-bat="lg-bat"
   alias batman="large-bat"
