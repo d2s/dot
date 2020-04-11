@@ -19,11 +19,19 @@ if type -p git &>/dev/null; then
   # Branch management
   alias gb="git branch"
   alias git-branch="git branch"
+
   # List branch details
   alias git-branch-full="git branch -v"
+
   # List branch details (including remote branches)
   alias git-branch-full-remote="git branch -va"
   alias git-branch-rename-current-to="git branch -m"
+
+  # List merged branches
+  alias git-merged="git branch --merged"
+
+  # List not merged branches
+  alias git-not-merged="git branch --no-merged"
 
   # -----------------------------------------------------------
   alias git-commit="git commit"
@@ -158,6 +166,12 @@ if type -p git &>/dev/null; then
   alias git-status-short-with-branches="git status -sb"
   alias gs="git-status-short-with-branches"
   alias gst="git-status-short-with-branches"
+
+  # -----------------------------------------------------------
+  # Web Server for Browsing Local Repositories
+  # - https://git-scm.com/docs/git-instaweb
+  # - https://github.com/tiimgreen/github-cheat-sheet#web-server-for-browsing-local-repositories
+  alias git-start-instaweb="git instaweb --local"
 
   # -----------------------------------------------------------
 fi
