@@ -33,6 +33,7 @@ if [ -d "$HOME/.rbenv/bin" ]; then
   alias install-ruby-gems-bundler-v2.7.1-local="rbenv local 2.7.1 && gem install bundler"
 
   alias update-ruby-gems-system="gem update --system"
+  alias update-ruby-gems="gem update"
 
   # Install Jekyll globally (NOTE: might not work properly)
   alias install-ruby-gems-jekyll="gem install jekyll"
