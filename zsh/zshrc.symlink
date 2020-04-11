@@ -291,6 +291,13 @@ fi
 
 
 # -----------------------------------------------------------
+# Tools for log management
+if [ -f "$ZSH/zsh/logs.zsh" ]; then
+  source "$ZSH/zsh/logs.zsh"
+fi
+
+
+# -----------------------------------------------------------
 # For macOS systems
 if [ "$OS" = "darwin" ] ; then
   # macOS related configs
