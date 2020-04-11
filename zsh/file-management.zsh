@@ -80,3 +80,14 @@ alias untar="tar xvf"
 alias tar-extract-gz="tar -zxvf"
 alias tar-compress-gz="tar -zcvf"
 
+
+# -----------------------------------------------------------
+# File fingerprints
+# -----------------------------------------------------------
+# Calculate sha1 of a file(s)
+#
+# Usage:
+#   sha1 filename
+#   sha1 *.md
+# -----------------------------------------------------------
+alias sha1='openssl sha1'

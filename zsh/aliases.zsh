@@ -12,14 +12,6 @@ fi
 
 
 # -----------------------------------------------------------
-# Calculate sha1 of a file(s)
-# Usage:
-#   sha1 filename
-#   sha1 *.md
-alias sha1='openssl sha1'
-
-
-# -----------------------------------------------------------
 # Environmental variables
 alias showenv="env | sort"
 alias showpath='echo $PATH | tr : "\n"'
