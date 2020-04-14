@@ -289,6 +289,11 @@ if [ -f "$ZSH/zsh/ruby.zsh" ]; then
   source "$ZSH/zsh/ruby.zsh"
 fi
 
+# -----------------------------------------------------------
+# Python related configs
+if [ -f "$ZSH/zsh/python.zsh" ]; then
+  source "$ZSH/zsh/python.zsh"
+fi
 
 # -----------------------------------------------------------
 # Tools for log management
