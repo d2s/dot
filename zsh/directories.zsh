@@ -14,6 +14,7 @@ if [ "$PROJECTS" ] ; then
   alias github-d2s="cd $PROJECTS/github.com/d2s"
   alias github-d2s-gist="cd $PROJECTS/github.com/d2s/gist"
   alias knowledge="cd $PROJECTS/github.com/d2s/knowledge"
+  alias colorpicker="cd $PROJECTS/github.com/d2s/colorpicker"
   alias companies="cd $PROJECTS/github.com/d2s/companies"
   alias gitlab="cd $PROJECTS/gitlab.com"
   alias bitbucket="cd $PROJECTS/bitbucket.org"
