@@ -37,9 +37,9 @@ if [ -d "$HOME/.pyenv" ]; then
   # - https://docs.python.org/3/library/venv.html
   # - https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/
   # ---------------------------------------------------------
-  alias create-new-python-venv="python3 -m venv .venv"
+  alias create-new-python-venv="python3 -m venv venv"
 
-  alias activate-python-venv="source .venv/bin/activate"
+  alias activate-python-venv="source venv/bin/activate"
   alias deactivate-python-venv="deactivate"
 
   # ---------------------------------------------------------
