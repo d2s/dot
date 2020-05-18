@@ -5,6 +5,11 @@
 # If `docker` is available
 if type -p docker &>/dev/null; then
   # -----------------------------------------------------------
+  # Leftover container image cleanup
+  # - https://docs.docker.com/engine/reference/commandline/image_prune/
+  alias cleanup-docker-images="docker image prune"
+
+  # -----------------------------------------------------------
   # youtube-dl
   # - https://github.com/vimagick/dockerfiles/tree/master/youtube/youtube-dl
   #
