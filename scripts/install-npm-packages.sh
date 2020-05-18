@@ -98,6 +98,13 @@ if [ -x "$(command -v npm)" ]; then
   if_not_already_installed "degit"
 
   # -----------------------------------------------------------
+  # Mrm
+  # - https://github.com/sapegin/mrm
+  # - https://github.com/sapegin/mrm/blob/master/docs/Getting_started.md
+  # -----------------------------------------------------------
+  if_not_already_installed "mrm"
+
+  # -----------------------------------------------------------
   # alex
   # "catch insensitive, inconsiderate writing"
   # - https://alexjs.com/
