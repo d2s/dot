@@ -24,6 +24,19 @@ if type -p docker &>/dev/null; then
   alias update-docker-yt='docker pull vimagick/youtube-dl'
 
   # -----------------------------------------------------------
+  # yle-dl-docker
+  # - https://github.com/taskinen/yle-dl-docker
+  # - https://github.com/aajanki/yle-dl
+  #
+  # Usage:
+  # - Download item:
+  #   yle YLE-URL [OPTIONAL-YLEDL-ARGUMENTS]
+  alias yle='docker run --rm -ti -u=$(id -u):$(id -g) -v "$(pwd)":/out taskinen/yle-dl'
+
+  # Refresh Docker container to the latest version
+  alias update-docker-yle='docker pull taskinen/yle-dl'
+
+  # -----------------------------------------------------------
   # wtfutil
   #
   # Setup script available:
