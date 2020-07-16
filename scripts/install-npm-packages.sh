@@ -149,6 +149,14 @@ if [ -x "$(command -v npm)" ]; then
   if_cli_command_does_not_exist "netlify" "netlify-cli" "NOTE: Remember to run 'netlify login' to finish the installation."
 
   # -----------------------------------------------------------
+  # Snyk CLI
+  # - https://support.snyk.io/hc/en-us/articles/360003812538-Install-the-Snyk-CLI
+  # - https://www.npmjs.com/package/snyk
+  # - https://github.com/snyk/snyk
+  # -----------------------------------------------------------
+  if_not_already_installed "snyk"
+
+  # -----------------------------------------------------------
   # Preact CLI
   # - https://preactjs.com/guide/v10/getting-started
   # - https://www.npmjs.com/package/preact-cli
