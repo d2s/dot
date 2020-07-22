@@ -46,4 +46,8 @@ fi
 if type -p gem &>/dev/null; then
   # List what (top level) packages are installed locally
   alias list-installed-ruby-local-packages="gem query --local"
+
+  # Remove all old versions of the installed Ruby gems
+  # - https://stackoverflow.com/questions/5902488/uninstall-old-versions-of-ruby-gems#5902518
+  alias cleanup-old-ruby-gems="gem cleanup"
 fi
