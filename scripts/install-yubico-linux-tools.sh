@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #############################################################
-# install-apt-packages.sh
+# install-yubico-linux-tools.sh
 # This script installs tools from Debian packages if possible
 #############################################################
 
