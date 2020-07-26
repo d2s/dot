@@ -16,6 +16,12 @@ if [ $DISABLE_NVM = "false" ] ; then
 
     # This loads nvm bash_completion
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+    # npq CLI
+    # "safely* install packages with npm or yarn by auditing them as part of your install process"
+    # - https://www.npmjs.com/package/npq
+    # - https://github.com/lirantal/npq
+    alias npm='npq-hero'
   fi
 fi
 
@@ -35,6 +41,13 @@ if type -p yarn &>/dev/null; then
   # Add the install location of global binaries to your PATH
   # More details: https://yarnpkg.com/en/docs/cli/global
   export PATH="$(yarn global bin):$PATH"
+
+  # npq CLI
+  # "safely* install packages with npm or yarn
+  # by auditing them as part of your install process"
+  # - https://www.npmjs.com/package/npq
+  # - https://github.com/lirantal/npq
+  alias yarn="NPQ_PKG_MGR=yarn npq-hero"
 fi
 
 # If `yarn` is available

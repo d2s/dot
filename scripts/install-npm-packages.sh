@@ -157,6 +157,15 @@ if [ -x "$(command -v npm)" ]; then
   if_not_already_installed "snyk"
 
   # -----------------------------------------------------------
+  # npq CLI
+  # "safely* install packages with npm or yarn
+  # by auditing them as part of your install process"
+  # - https://www.npmjs.com/package/npq
+  # - https://github.com/lirantal/npq
+  # -----------------------------------------------------------
+  if_not_already_installed "npq"
+
+  # -----------------------------------------------------------
   # Preact CLI
   # - https://preactjs.com/guide/v10/getting-started
   # - https://www.npmjs.com/package/preact-cli
