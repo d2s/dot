@@ -48,10 +48,7 @@ if type -p yarn &>/dev/null; then
   # - https://www.npmjs.com/package/npq
   # - https://github.com/lirantal/npq
   alias yarn="NPQ_PKG_MGR=yarn npq-hero"
-fi
 
-# If `yarn` is available
-if type -p yarn &>/dev/null; then
   # List what (top level) packages are installed globally
   alias list-installed-yarn-global-packages="yarn global list --depth=0"
 
