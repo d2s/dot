@@ -77,6 +77,23 @@ if_cli_command_does_not_exist() {
 # -----------------------------------------------------------
 if [ -x "$(command -v npm)" ]; then
   # -----------------------------------------------------------
+  # Snyk CLI
+  # - https://support.snyk.io/hc/en-us/articles/360003812538-Install-the-Snyk-CLI
+  # - https://www.npmjs.com/package/snyk
+  # - https://github.com/snyk/snyk
+  # -----------------------------------------------------------
+  if_not_already_installed "snyk"
+
+  # -----------------------------------------------------------
+  # npq CLI
+  # "safely* install packages with npm or yarn
+  # by auditing them as part of your install process"
+  # - https://www.npmjs.com/package/npq
+  # - https://github.com/lirantal/npq
+  # -----------------------------------------------------------
+  if_not_already_installed "npq"
+
+  # -----------------------------------------------------------
   # human readable diffs
   # - https://www.npmjs.com/package/diff-so-fancy
   # - https://github.com/so-fancy/diff-so-fancy
@@ -147,23 +164,6 @@ if [ -x "$(command -v npm)" ]; then
   # - https://github.com/netlify/cli
   # -----------------------------------------------------------
   if_cli_command_does_not_exist "netlify" "netlify-cli" "NOTE: Remember to run 'netlify login' to finish the installation."
-
-  # -----------------------------------------------------------
-  # Snyk CLI
-  # - https://support.snyk.io/hc/en-us/articles/360003812538-Install-the-Snyk-CLI
-  # - https://www.npmjs.com/package/snyk
-  # - https://github.com/snyk/snyk
-  # -----------------------------------------------------------
-  if_not_already_installed "snyk"
-
-  # -----------------------------------------------------------
-  # npq CLI
-  # "safely* install packages with npm or yarn
-  # by auditing them as part of your install process"
-  # - https://www.npmjs.com/package/npq
-  # - https://github.com/lirantal/npq
-  # -----------------------------------------------------------
-  if_not_already_installed "npq"
 
   # -----------------------------------------------------------
   # Preact CLI
