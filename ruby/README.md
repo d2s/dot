@@ -32,3 +32,7 @@ bundle install
     - [Bundler: bundle add](https://bundler.io/v2.0/man/bundle-add.1.html)
 
 
+### Packages
+
+- [doing](https://brettterpstra.com/projects/doing/)
+  - [RubyGems package page](https://rubygems.org/gems/doing)
