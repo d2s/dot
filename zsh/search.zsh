@@ -165,3 +165,13 @@ alias files-changed-in-15-minutes="find . -newerct '15 minute ago' -print"
 files-changed-in-x-minutes() {
   find . -newerct "$1 minute ago" -print
 }
+
+# -----------------------------------------------------------
+# Show files changed in X days
+#
+# Usage:
+#   files-changed-in-x-minutes 5
+# -----------------------------------------------------------
+files-changed-in-x-days() {
+  find . -newerct "$1 days ago" -print
+}
