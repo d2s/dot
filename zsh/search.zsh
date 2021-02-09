@@ -122,6 +122,7 @@ word() {
 # if [ -d "/usr/share/dict/words" ]; then
 # fi
 
+
 # -----------------------------------------------------------
 # If `grep` is available
 if type -p grep &>/dev/null; then
@@ -135,6 +136,7 @@ if type -p grep &>/dev/null; then
   }
 fi
 
+
 # -----------------------------------------------------------
 # Keyword explainer tools
 #
@@ -145,7 +147,6 @@ fi
 if type -p wtf &>/dev/null; then
   alias whatis="wtf"
 fi
-
 
 
 # -----------------------------------------------------------
