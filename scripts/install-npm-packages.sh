@@ -91,7 +91,7 @@ if [ -x "$(command -v npm)" ]; then
   # - https://www.npmjs.com/package/npq
   # - https://github.com/lirantal/npq
   # -----------------------------------------------------------
-  if_not_already_installed "npq"
+  # if_not_already_installed "npq"
 
   # -----------------------------------------------------------
   # human readable diffs
