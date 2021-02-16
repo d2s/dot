@@ -21,7 +21,7 @@ if [ $DISABLE_NVM = "false" ] ; then
     # "safely* install packages with npm or yarn by auditing them as part of your install process"
     # - https://www.npmjs.com/package/npq
     # - https://github.com/lirantal/npq
-    alias npm='npq-hero'
+    # alias npm='npq-hero'
   fi
 fi
 
