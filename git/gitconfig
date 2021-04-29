@@ -18,3 +18,11 @@
 # - https://agateau.com/2015/splitting-your-gitconfig/
 [include]
   path = ~/.gitconfig.local
+[filter "lfs"]
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+[user]
+  name = Daniel Schildt
+  email = daniel@autiomaa.org
