@@ -147,15 +147,6 @@ if [ -x "$(command -v npm)" ]; then
   if_not_already_installed "serve"
 
   # -----------------------------------------------------------
-  # ZEIT Now
-  # "a cloud platform for static sites and serverless functions"
-  # - https://zeit.co/docs?path=docs
-  # - https://www.npmjs.com/package/now
-  # - https://github.com/zeit/now
-  # -----------------------------------------------------------
-  if_not_already_installed "now"
-
-  # -----------------------------------------------------------
   # Netlify CLI:
   # "continuous deployment, serverless functions, web hosting"
   # - https://www.netlify.com/
