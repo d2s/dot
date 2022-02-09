@@ -106,13 +106,13 @@ if [ -x "$(command -v snap)" ]; then
   # - https://twitter.com/code
   # - https://snapcraft.io/code
   # -----------------------------------------------------------
-  if_not_already_installed "code"
+  # if_not_already_installed "code"
 
   # -----------------------------------------------------------
   # Firefox (web browser)
   # - https://snapcraft.io/firefox
   # -----------------------------------------------------------
-  if_not_already_installed "firefox"
+  # if_not_already_installed "firefox"
 
   # -----------------------------------------------------------
   # Storybook
