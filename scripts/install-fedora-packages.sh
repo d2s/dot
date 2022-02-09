@@ -72,8 +72,8 @@ fedora_package_already_installed() {
 #   if_not_already_installed "package"
 # -----------------------------------------------------------
 if_not_already_installed() {
-  INSTALL_COMPARISON_PATTERN="Installed Packages"
-  if [[ ! "$(sudo dnf info "$1" |grep "$INSTALL_COMPARISON_PATTERN")" == "$INSTALL_COMPARISON_PATTERN" ]]; then
+  INSTALL_COMPARISON_PATTERN="package $1 is not installed"
+  if [[ "$(rpm -q "$1")" == "$INSTALL_COMPARISON_PATTERN" ]]; then
     install_fedora_package "$1"
   else
     fedora_package_already_installed "$1"
@@ -86,11 +86,11 @@ if_not_already_installed() {
 if [ -x "$(command -v dnf)" ]; then
   fedora_package_list_update
 
-  install_fedora_package "git"
-  install_fedora_package "curl"
+  # install_fedora_package "git"
+  #install_fedora_package "curl"
   install_fedora_package "ack"
-  install_fedora_package "zsh"
-  install_fedora_package "fish"
+  #install_fedora_package "zsh"
+  #install_fedora_package "fish"
   # install_fedora_package "ShellCheck"
   # install_fedora_package "whois"
 else
