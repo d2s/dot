@@ -27,7 +27,7 @@ fedora_package_list_update() {
   printf "\\n"
   printf "Updating Fedora package lists:"
   printf "\\n"
-  sudo dnf update
+  sudo dnf makecache
   printf "\\n"
 }
 
