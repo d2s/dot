@@ -86,11 +86,12 @@ if_not_already_installed() {
 if [ -x "$(command -v dnf)" ]; then
   fedora_package_list_update
 
-  # install_fedora_package "git"
-  #install_fedora_package "curl"
+  install_fedora_package "git"
+  install_fedora_package "curl"
   install_fedora_package "ack"
-  #install_fedora_package "zsh"
-  #install_fedora_package "fish"
+  install_fedora_package "zsh"
+  install_fedora_package "fish"
+  install_fedora_package "vim-enhanced"
   # install_fedora_package "ShellCheck"
   # install_fedora_package "whois"
 else
