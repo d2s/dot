@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #############################################################
-# install-apt-packages.sh
+# install-fedora-packages.sh
 # This script installs tools from Fedora packages
 #############################################################
 #
