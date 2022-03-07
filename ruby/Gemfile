@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
 
-gem "doing", "~> 1.0.31"
+gem "doing", "~> 2.1.0"
