@@ -86,10 +86,6 @@ if [ -x "$(command -v apt)" ]; then
   # DNS query tools (including `dig`)
   if_not_already_installed "dnsutils"
 
-  # Chromium (web browser)
-  if_not_already_installed "chromium"
-  if_not_already_installed "chromium-sandbox"
-
   # cowsay (configurable talking cow)
   if_not_already_installed "cowsay"
 
