@@ -4,5 +4,12 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {},
+	"extensions": {
+		"recommendations": [
+			"eamodio.gitlens",
+			"editorconfig.editorconfig",
+			"davidanson.vscode-markdownlint"
+		]
+	}
 }
