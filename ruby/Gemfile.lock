@@ -3,7 +3,7 @@ GEM
   specs:
     chronic (0.10.2)
     deep_merge (1.2.2)
-    doing (2.1.84)
+    doing (2.1.86)
       chronic (~> 0.10, >= 0.10.2)
       deep_merge (~> 1.2, >= 1.2.1)
       gli (~> 2.20, >= 2.20.1)
@@ -56,7 +56,7 @@ GEM
       tty-cursor (~> 0.7)
       tty-screen (~> 0.8)
       wisper (~> 2.0)
-    tty-screen (0.8.1)
+    tty-screen (0.8.2)
     tty-which (0.5.0)
     unicode-display_width (2.1.0)
     unicode_utils (1.4.0)
