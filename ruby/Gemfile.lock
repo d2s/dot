@@ -27,7 +27,7 @@ GEM
     pastel (0.8.0)
       tty-color (~> 0.5)
     plist (3.6.0)
-    rexml (3.3.3)
+    rexml (3.3.6)
       strscan
     rouge (3.28.0)
     safe_yaml (1.0.5)
