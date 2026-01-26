@@ -80,14 +80,8 @@ if [ -x "$(command -v apt)" ]; then
   # - https://github.com/koalaman/shellcheck#user-content-installing
   if_not_already_installed "shellcheck"
 
-  # `pcregrep` Perl 5 compatible regular expressions
-  if_not_already_installed "pcregrep"
-
   # DNS query tools (including `dig`)
   if_not_already_installed "dnsutils"
-
-  # cowsay (configurable talking cow)
-  if_not_already_installed "cowsay"
 
   # Powerline fonts for vim and command line
   if_not_already_installed "powerline"
@@ -112,9 +106,6 @@ if [ -x "$(command -v apt)" ]; then
   # NCurses Disk Usage
   # - https://dev.yorhel.nl/ncdu
   if_not_already_installed "ncdu"
-
-  # inline images for w3m on terminal emulator
-  if_not_already_installed "w3m-img"
 
   # Debian package management tools
   # - http://jxf.me/entries/better-apt-ubuntu/
