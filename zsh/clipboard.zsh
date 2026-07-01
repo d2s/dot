@@ -1,19 +1,35 @@
 # clipboard.zsh
 
 # -----------------------------------------------------------
-# Location related aliases
+# Clipboard handling aliases similar to macOS commands
+#
+# - `xclip` CLI tool required for this to work
+#   - It can be installed with `sudo apt install xclip`
 
-# Copy name of current workind directory to clipboard
 if [ "$SYSTEMTYPE" = "linux" ] ; then
-  alias pwdcopy="pwd | xclip -selection clipboard"
-elif [ "$OS" = "darwin" ] ; then
-  alias pwdcopy="pwd | pbcopy"
+  # If `xclip` is available, add aliases
+  if type -p xclip &>/dev/null; then
+    # Copy current working directory path to clipboard
+    alias pwdcopy="pwd | xclip -selection clipboard"
+
+    # Copy text to the clipboard from the terminal input
+    #
+    # Usage example:
+    #   echo word | pbcopy
+    alias pbcopy='xclip -selection clipboard'
+
+    # Paste text to the clipboard to the terminal
+    #
+    # Usage example:
+    #   pbpaste
+    alias pbpaste='xclip -selection clipboard -o'
+  fi
 fi
 
 # -----------------------------------------------------------
-# Clipboard handling aliases similar to macOS commands
+# Location related aliases
 
-if [ "$SYSTEMTYPE" = "linux" ] ; then
-  alias pbcopy='xclip -selection clipboard'
-  alias pbpaste='xclip -selection clipboard -o'
+if [ "$OS" = "darwin" ] ; then
+  # Copy current working directory path to clipboard
+  alias pwdcopy="pwd | pbcopy"
 fi
