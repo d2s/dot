@@ -171,7 +171,7 @@ files-changed-in-x-minutes() {
 # Show files changed in X days
 #
 # Usage:
-#   files-changed-in-x-minutes 5
+#   files-changed-in-x-days 5
 # -----------------------------------------------------------
 files-changed-in-x-days() {
   find . -newerct "$1 days ago" -print
