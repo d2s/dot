@@ -6,6 +6,11 @@ Configuration files for Linux & macOS environments
 
 ## Setup
 
+> [!warning]
+>
+> Following setup instructions are outdated,
+> because I don't use `zinit` anymore.
+
 ```sh
 # If you don't already have Git installed:
 # sudo apt install git
