@@ -4,7 +4,32 @@ Configuration files for Linux & macOS environments
 
 ---
 
-## Setup
+## Setup instructions
+
+- TODO: Write updated setup instructions.
+
+---
+
+## Usage instructions
+
+### Task runner instructions
+
+Usage:
+
+- Install `just` task runner from Debian repositories.
+- Go to the dotfiles directory.
+- Run `just` to run the default task.
+- Terminals expand a list of available tasks with a Tab key.
+
+More details:
+
+- https://just.systems/man/en/introduction.html
+- https://just.systems/man/en/quick-start.html
+- https://github.com/casey/just
+
+---
+
+## OUTDATED setup instructions
 
 > [!warning]
 >
@@ -189,5 +214,3 @@ rm -rdf zplugin
   - Download zip file
   - Uncompress zip file.
   - Open `fonts/FontAwesome.otf` file to add it to the operating system.
-
-
