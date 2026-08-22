@@ -29,6 +29,7 @@ apt_update() {
   printf "\\n"
   sudo apt-get update
   printf "\\n"
+  # logger -t install-apt-packages "install-apt-packages.sh updated apt package lists"
 }
 
 # -----------------------------------------------------------
@@ -41,6 +42,7 @@ install_apt_package() {
   printf "sudo apt-get install %s\\n" "$1"
   sudo apt-get install "$1"
   printf "\\n\\n"
+  logger -t install-apt-packages "install-apt-packages.sh tried to install package: $1"
 }
 
 # -----------------------------------------------------------
@@ -81,7 +83,7 @@ if [ -x "$(command -v apt)" ]; then
   if_not_already_installed "shellcheck"
 
   # DNS query tools (including `dig`)
-  if_not_already_installed "dnsutils"
+  if_not_already_installed "bind9-dnsutils"
 
   # Powerline fonts for vim and command line
   if_not_already_installed "powerline"
@@ -89,8 +91,11 @@ if [ -x "$(command -v apt)" ]; then
   # Zsh terminal emulator
   if_not_already_installed "zsh"
 
-  # Debugging tools
+  # System performance monitoring tools
+  if_not_already_installed "btop"
   if_not_already_installed "htop"
+
+  # Debugging tools
   if_not_already_installed "strace"
 
   # Downloaders
@@ -100,12 +105,24 @@ if [ -x "$(command -v apt)" ]; then
   if_not_already_installed "git"
   if_not_already_installed "gitg"
 
+  # bat file preview tool (batcat command)
+  if_not_already_installed "bat"
+
   # File search tools
   if_not_already_installed "ack"
+  if_not_already_installed "tree"
 
   # NCurses Disk Usage
   # - https://dev.yorhel.nl/ncdu
   if_not_already_installed "ncdu"
+
+  # Dust disk usage
+  # - https://github.com/bootandy/dust
+  if_not_already_installed "du-dust"
+
+  # Just task runner
+  # - https://just.systems/man/en/
+  if_not_already_installed "just"
 
   # Debian package management tools
   # - http://jxf.me/entries/better-apt-ubuntu/
