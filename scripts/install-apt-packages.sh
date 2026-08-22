@@ -146,6 +146,11 @@ if [ -x "$(command -v apt)" ]; then
   # - https://github.com/rpodgorny/uptimed
   if_not_already_installed "uptimed"
 
+  # micro text editor
+  # - https://micro-editor.github.io
+  if_not_already_installed "micro"
+
+
 else
   # Exit with error code when apt is not available
   echo "ERROR: apt is not available! Nothing happened."
