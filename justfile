@@ -14,7 +14,7 @@ commit:
   git commit
 
 # Publish code changes to GitHub repository
-publish:
+publish: _check-clean
   git push
 
 # Calculate size of files in the project directory
