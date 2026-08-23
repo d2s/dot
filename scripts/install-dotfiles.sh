@@ -22,6 +22,7 @@ ORIGINAL_IFS=$IFS
 # Setup repository
 # -----------------------------------------------------------
 # ln -sf ~/projects/github/d2s/dot ~/.dotfiles
+# ln -sf ~/git/github/d2s/dot ~/.dotfiles
 
 # -----------------------------------------------------------
 # Git configuration
