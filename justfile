@@ -60,6 +60,46 @@ sloc:
   @echo ""
   @echo "`wc -l *.md`"
 
+# What are the most changed files during the past year?
+[group('Audit')]
+audit-git-most-changes:
+  git log --format=format: --name-only --since="1 year ago" | sort | uniq -c | sort -nr | head -20
+
+# What are the most changed files during the whole project?
+[group('Audit')]
+audit-git-most-changes-since-beginning:
+  git log --format=format: --name-only | sort | uniq -c | sort -nr | head -20
+
+# What are the most changed CSS files during the whole project?
+[group('Audit')]
+audit-git-most-changes-since-beginning-css:
+  git log --format=format: --name-only -- src/assets/styles/ | sort | uniq -c | sort -nr | head -20
+
+# Who made most of the Git commits?
+[group('Audit')]
+audit-git-contributors:
+  git shortlog -sn --no-merges
+
+# Potential problem areas
+[group('Audit')]
+audit-git-bug-clusters:
+  git log -i -E --grep="fix|bug|broken" --name-only --format='' | sort | uniq -c | sort -nr | head -20
+
+# Commit count by month, for the entire history of the repo.
+[group('Audit')]
+audit-git-commit-count-by-month:
+  git log --format='%ad' --date=format:'%Y-%m' | sort | uniq -c
+
+# Revert and hotfix frequency in all commits
+[group('Audit')]
+audit-git-revert-hotfix-frequency-all:
+  git log --oneline | grep -iE 'revert|hotfix|emergency|rollback'
+
+# Revert and hotfix frequency in a year
+[group('Audit')]
+audit-git-revert-hotfix-frequency-year:
+  git log --oneline --since="1 year ago" | grep -iE 'revert|hotfix|emergency|rollback'
+
 # Install APT packages on a Debian Linux distribution
 [group('Scripts')]
 install-apt-packages:
