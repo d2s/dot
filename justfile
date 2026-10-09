@@ -8,6 +8,7 @@ GIT_HASH := `git rev-parse --short HEAD`
 # Task aliases
 alias c := commit
 alias s := status
+alias l := log
 
 # Default task lists available Just tasks
 default:
@@ -17,7 +18,19 @@ default:
 [group('Git')]
 status:
   @echo "Git commit hash: {{GIT_HASH}} \n"
-  git status
+  git status -sb
+
+# Git log summary
+[group('Git')]
+log:
+  @echo "Git commit hash: {{GIT_HASH}} \n"
+  git log --oneline --graph --decorate -20
+
+# Latest Git commit
+[group('Git')]
+last:
+  @echo "Git commit hash: {{GIT_HASH}} \n"
+  git log -1 HEAD --stat
 
 # Commit code changes to Git repository
 [group('Git')]
