@@ -3,39 +3,51 @@
 
 # Variables
 project := "dot"
-alias c := commit
+GIT_HASH := `git rev-parse --short HEAD`
 
-# Default task
+# Task aliases
+alias c := commit
+alias s := status
+
+# Default task lists available Just tasks
 default:
+  @just --list
+
+# Git status
+[group('Git')]
+status:
+  @echo "Git commit hash: {{GIT_HASH}} \n"
   git status
 
 # Commit code changes to Git repository
+[group('Git')]
 commit:
   git commit
 
 # Publish code changes to GitHub repository
-publish: _check-clean
+[group('Git')]
+publish: check-clean
   git push
 
+# Check repository for uncommitted code changes
+[group('Git')]
+check-clean:
+    @git diff --exit-code || (printf "\e[1;97;43m[Warning]\e[0m Uncommitted changes in {{project}}! \n" && exit 1)
+    @git diff --cached --exit-code || (printf "\e[1;97;43m[Warning]\e[0m Staged changes in {{project}}! \n" && exit 1)
+
 # Calculate size of files in the project directory
+[group('Helpers')]
 filesize:
   du -sh
 
 # Calculate lines of code in different filetypes
+[group('Helpers')]
 sloc:
   @echo "Lines of text in Markdown files:"
   @echo ""
   @echo "`wc -l *.md`"
 
 # Install APT packages on a Debian Linux distribution
+[group('Scripts')]
 install-apt-packages:
   ./scripts/install-apt-packages.sh
-
-# Exanple task
-example-task:
-  @echo 'This task does nothing...'
-
-# Check repository for uncommitted code changes
-_check-clean:
-    @git diff --exit-code || (printf "\e[1;97;43m[Warning]\e[0m Uncommitted changes in {{project}}! \n" && exit 1)
-    @git diff --cached --exit-code || (printf "\e[1;97;43m[Warning]\e[0m Staged changes in {{project}}! \n" && exit 1)
