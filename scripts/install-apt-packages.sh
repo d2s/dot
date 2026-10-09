@@ -150,6 +150,10 @@ if [ -x "$(command -v apt)" ]; then
   # - https://micro-editor.github.io
   if_not_already_installed "micro"
 
+  # pv (monitor and manage the progress of data through a pipe)
+  # "Concatenate FILE(s), or standard input, to standard output, with monitoring."
+  # - https://www.man7.org/linux/man-pages/man1/pv.1.html
+  if_not_already_installed "pv"
 
 else
   # Exit with error code when apt is not available
